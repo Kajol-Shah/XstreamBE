@@ -5,34 +5,48 @@ const helper = require('../helper');
 const { createUser,checkUser } = require('../data/auth');
 const { authorizeUser } = require('../data/authorized');
 
-router.route('/').get(async (req, res) => {
+// router.route('/').get(async (req, res) => {
  
-    res.send("hello world");
+//     res.send("hello world");
   
-})
+// })
 
-// router.route('/').get(authorizeUser,async (req, res) => {
- 
-//     if(req.user) {
-//       return res
-//           .status(200)
-//           .render('pages/homePage',{
-//           partial: "home-script",
-//           css: "home-css",
-//           title:"Home All",
-//           user:true,
-//         });
-//   } else {     
-//     console.log("inn");
-//     return res
-//     .status(200)
-//     .render('pages/homePage',{
-//     partial: "home-script",
-//     css: "home-css",
-//     title:"Home All",
-//   });
-//   }
-//   })
+router.route('/').get(authorizeUser,async (req, res) => {
+ try{
+  if(req.user) {
+    return res
+        .status(200)
+        .render('pages/homePage',{
+        partial: "home-script",
+        css: "home-css",
+        title:"Home All",
+        user:true,
+      });
+} else {     
+  console.log("inn");
+  return res
+  .status(200)
+  .render('pages/homePage',{
+  partial: "home-script",
+  css: "home-css",
+  title:"Home All",
+});
+}
+ }
+catch(e){
+  if(e.statusCode===500){
+    return res
+    .status(500).send({hasErrors: true, error: e.message});
+  }
+  if(e.statusCode) {
+    return res
+    .status(400).send({hasErrors: true, error: e.message});
+  } else {
+    return res
+    .status(400).send({hasErrors: true, error: e.message});
+  }
+}
+  })
 
 
 
