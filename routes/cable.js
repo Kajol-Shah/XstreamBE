@@ -55,13 +55,54 @@ router.route('/').get(authorizeUser,async (req, res) => {
         }
       }
     } else {     
-          return res
+      try{
+        const Tv = await getTv();
+        if(Tv.fetched){
+      return res
           .status(200)
           .render('pages/cablePage',{
           partial: "cable-script",
           css: "cable-css",
           title:"Cable",
+          data:Tv
         });
+      }
+    }
+    catch(e){
+      if(e.statusCode===500){
+        return res
+        .status(500)
+        .render('pages/cablePage',{
+        partial: "cable-script",
+        css: "cable-css",
+        title:"Cable",
+      
+        hasErrors: true, error: e.message, 
+      });
+      }
+      if(e.statusCode) {
+        return res
+        .status(400)
+        .render('pages/cablePage',{
+        partial: "cable-script",
+        css: "cable-css",
+        title:"Cable",
+
+        hasErrors: true, error: e.message,
+      });
+       
+      } else {
+        return res
+        .status(400)
+        .render('pages/cablePage',{
+        partial: "cable-script",
+        css: "cable-css",
+        title:"Cable",
+   
+        hasErrors: true, error: e.message,
+      });
+      }
+    }
     }
     })
 module.exports = router;
