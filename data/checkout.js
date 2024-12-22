@@ -69,7 +69,85 @@ const updateItems = async ( data,AccountId) => {
 
 
 };
+const validation = async ( data,AccountId) => { 
+  AccountId= AccountId.trim();
+    try{
+      helper.validObjectId(AccountId);
+    } catch (e) {
+        throw e;
+    }
+    // console.log(data);
+  let validate = {validated: false}
+  const itemCollection = await item();
+  const accountCollection = await account();
+  let validData = {};
+  let Premium =false;
+  let Premium_valid = false;
+  for (const item of data.data) {
+    let isItem = await itemCollection.findOne({_id: new ObjectId(item.itemId)});
+    if(isItem.insertedCount === 0){
+      throw {statusCode: 500, message: 'Internal Server Error'};
+    }
+    else{
+      if(isItem.Name==="XSTREAM OP Basic"){
+        validData.basic=true;
+      }
+      else if(isItem.Name==="25MB"|| isItem.Name==="50MB" || isItem.Name==="100MB"){
+        validData.basicInternet=true;
+      }
+      else if(isItem.Name==="XSTREAM Sports"|| isItem.Name==="XSTREAM HBO" || isItem.Name==="XSTREAM Spanish"){
+        Premium=true;
+      }
+      else if(isItem.Name==="XSTREAM Preferred" || isItem.Name==="XSTREAM Expanded"){
+        Premium_valid=true;
+      }
+    }
+  }
+    let accountItem = await accountCollection.findOne({_id:new ObjectId(AccountId)});
+    if(accountItem.insertedCount === 0){
+      throw {statusCode: 500, message: 'Internal Server Error'};
+    }
+    else{
+        for (const item of accountItem.PlanPurchased) {
+            let isItem = await itemCollection.findOne({_id: new ObjectId(item.item_id)});
+            if(isItem.insertedCount === 0){
+              throw {statusCode: 500, message: 'Internal Server Error'};
+            }
+            if(isItem.Name==="XSTREAM OP Basic"){
+              validData.basic=true;
+            }
+            else if(isItem.Name==="25MB"|| isItem.Name==="50MB" || isItem.Name==="100MB"){
+              validData.basicInternet=true;
+            }
+            else if(isItem.Name==="XSTREAM Preferred" || isItem.Name==="XSTREAM Expanded"){
+              Premium_valid=true;
+            }
+          }
+    }
+
+    if(validData){
+      if(validData.basic===true && validData.basicInternet===true){
+        validate.validated = true;
+      }
+      else{
+        throw {statusCode: 400, message: 'Select all minimum plans'};
+      }
+    }
+    if(Premium){
+      if(Premium_valid){
+        validate.validated = true;
+      }
+      else{
+        throw {statusCode: 400, message: 'Select Preferred or Expanded plans to add Premium plans'};
+      }
+    }
+    return validate;
+
+
+
+};
 module.exports = {
     getItems,
-    updateItems
+    updateItems,
+    validation
 };

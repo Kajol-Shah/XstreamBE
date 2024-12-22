@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { authorizeUser } = require('../data/authorized');
-const { getItems,updateItems } = require('../data/checkout');
+const { getItems,updateItems,validation } = require('../data/checkout');
 const helper = require('../helper');
 const crypto = require('crypto');
 
@@ -16,18 +16,20 @@ router.route('/').get(authorizeUser,async (req, res) => {
       // console.log(requestData);
         helper.validObjectId(requestData);
         const order = await getItems(requestData);
-        // console.log(req.cookies.userSave);
-
-          return res
-            .status(200)
-            .render('pages/checkoutPage',{
-            partial: "checkout-script",
-            css: "checkout-css",
-            title:"Checkout",
-            user:true,
-            orderDetails:order
-          })
-        
+        if(order){
+          const validate = await validation(order,requestData);
+          if(validate.validated){
+              return res
+              .status(200)
+              .render('pages/checkoutPage',{
+              partial: "checkout-script",
+              css: "checkout-css",
+              title:"Checkout",
+              user:true,
+              orderDetails:order
+            })
+          }
+        }
         }
         catch(e) {
           if(e.statusCode===500){
