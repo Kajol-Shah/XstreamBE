@@ -2,34 +2,29 @@ const express = require('express');
 const {constructorMethod} = require('./routes');
 const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
-const Handlebars = require('handlebars');
+const path = require('path');
 
 const app = express();
-const static = express.static(__dirname + '/public');
+const static = express.static(__dirname + "/public");
+app.engine('handlebars', exphbs.engine({
+  defaultLayout: 'main', // Default layout file (e.g., main.handlebars)
+  partialsDir: path.join(__dirname, 'views/partials'), // Path to partials
+}));
+app.set('view engine', 'handlebars');
 
-// Create a Handlebars instance with helpers and partials directory
-const handlebarsInstance = exphbs.create({
-  defaultLayout: 'main',
-  // helpers: {
-  //   asJSON: (obj, spacing) => {
-  //     if (typeof spacing === 'number') {
-  //       return new Handlebars.SafeString(JSON.stringify(obj, null, spacing));
-  //     }
-  //     return new Handlebars.SafeString(JSON.stringify(obj));
-  //   },
-  // },
-  partialsDir: ['views/partials/'], // Specify the partials directory
-});
+// Set the views folder
+app.set('views', path.join(__dirname, 'views'));
+
+// Middleware setup
+app.use('/public', static);
 
 // Middleware setup
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.use('/public', static);
 
-// View engine setup
-app.engine('handlebars', handlebarsInstance.engine);
-app.set('view engine', 'handlebars');
+
+
 
 // Configure routes
 

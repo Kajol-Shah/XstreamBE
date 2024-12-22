@@ -16,7 +16,7 @@ router.route('/').get(async (req, res) => {
   if(req.user) {
     return res
         .status(200)
-        .render('homePage',{
+        .render('pages/homePage',{
         partial: "home-script",
         css: "home-css",
         title:"Home All",
@@ -26,7 +26,7 @@ router.route('/').get(async (req, res) => {
   console.log("inn");
   return res
   .status(200)
-  .render('homePage',{
+  .render('pages/homePage',{
   partial: "home-script",
   css: "home-css",
   title:"Home All",
