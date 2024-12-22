@@ -34,7 +34,8 @@ app.set('view engine', 'handlebars');
 // Configure routes
 
 // configRoutes(app);
-app.use('/', './routes/index');
+app.use(app.router);
+routes.initialize(app);
 app.use('*', (req, res) => {
   res.status(404).send("Page not found");
 });
@@ -45,8 +46,7 @@ app.use(function(err, req, res, next) {
       error: {}
   });
 });
-app.use(app.router);
-routes.initialize(app);
+
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
