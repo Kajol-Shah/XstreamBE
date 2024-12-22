@@ -14,10 +14,10 @@ nav {
     align-items: center;
   }
   nav .logo img {
-    height: 50%;
-    width: 27%;
-    margin-left: -39px;
-    margin-top: -29px;
+    height: 300px;
+    width: auto;
+    margin-left: -35px;
+    margin-top: -20px;
   }
   /* nav .logo h1 {
     font-size: 1.1rem;
@@ -100,7 +100,7 @@ nav {
     padding: 20% 0;
     background: rgba(255, 255, 255);
     transition: all 0.5s ease-in;
-    z-index: 2;
+    z-index: 3;
   }
   .active {
     left: 0;
