@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node app.js"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "author": "Kajol",
   "license": "MIT",
   "description": "",
