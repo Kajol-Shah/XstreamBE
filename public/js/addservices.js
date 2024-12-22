@@ -30,10 +30,10 @@ document.getElementById('expandedplan').addEventListener('click', function () {
             })
             .catch(error => {
               // Handle errors
-              // console.log('Error:', error);
+              console.log('Error:', error);
               Swal.fire({
                     icon: 'error',
-                    title: 'Cannot add to cart!',
+                    title: 'Already Purchased or Cannot add to cart!',
                     confirmButtonText: 'OK'
             });
     });
@@ -110,7 +110,7 @@ if (button.innerHTML== 'Add Plan') {
     // console.log('Error:', error);
     Swal.fire({
           icon: 'error',
-          title: 'Cannot add to cart!',
+          title: 'Already Purchased or Cannot add to cart!',
           confirmButtonText: 'OK'
   });
 });
@@ -182,7 +182,7 @@ document.getElementById('servicebtn').addEventListener('click', function () {
       // console.log('Error:', error);
       Swal.fire({
             icon: 'error',
-            title: 'Cannot add to cart!',
+            title: 'Already Purchased or Cannot add to cart!',
             confirmButtonText: 'OK'
     });
 });
@@ -248,7 +248,7 @@ if (button.innerHTML== 'Add Plan') {
     // console.log('Error:', error);
     Swal.fire({
           icon: 'error',
-          title: 'Cannot add to cart!',
+          title: 'Already Purchased or Cannot add to cart!',
           confirmButtonText: 'OK'
   });
 });
@@ -318,7 +318,7 @@ document.getElementById('internetbtn').addEventListener('click', function () {
           // console.log('Error:', error);
           Swal.fire({
                 icon: 'error',
-                title: 'Cannot add to cart!',
+                title: 'Already Purchased or Cannot add to cart!',
                 confirmButtonText: 'OK'
         });
       });
@@ -401,7 +401,7 @@ document.getElementById('phonebtn').addEventListener('click', function () {
           // console.log('Error:', error);
           Swal.fire({
                 icon: 'error',
-                title: 'Cannot add to cart!',
+                title: 'Already Purchased or Cannot add to cart!',
                 confirmButtonText: 'OK'
         });
       });
@@ -479,7 +479,7 @@ document.getElementById('hbobtn').addEventListener('click', function () {
       // console.log('Error:', error);
       Swal.fire({
             icon: 'error',
-            title: 'Cannot add to cart!',
+            title: 'Already Purchased or Cannot add to cart!',
             confirmButtonText: 'OK'
     });
   });
@@ -545,7 +545,7 @@ document.getElementById('sportsbtn').addEventListener('click', function () {
       // console.log('Error:', error);
       Swal.fire({
             icon: 'error',
-            title: 'Cannot add to cart!',
+            title: 'Already Purchased or Cannot add to cart!',
             confirmButtonText: 'OK'
     });
   });
@@ -611,7 +611,7 @@ document.getElementById('spanishbtn').addEventListener('click', function () {
       // console.log('Error:', error);
       Swal.fire({
             icon: 'error',
-            title: 'Cannot add to cart!',
+            title: 'Already Purchased or Cannot add to cart!',
             confirmButtonText: 'OK'
     });
   });

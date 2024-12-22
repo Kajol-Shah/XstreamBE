@@ -5,8 +5,7 @@ const mongoCollections = require('../config/mongoCollections');
 const users = mongoCollections.users;
 const cart = mongoCollections.cart;
 const item = mongoCollections.item;
-
-
+const account = mongoCollections.account;
 
 const addToCart = async ( data) => { 
   data.itemId= data.itemId.trim();
@@ -21,9 +20,24 @@ const addToCart = async ( data) => {
   let addtocart = {inserted: false}
   const itemCollection = await item();
   const cartCollection = await cart();
+  const accountCollection = await account();
   const isItem = await itemCollection.findOne({_id: new ObjectId(data.itemId)});
   if(!isItem){
     throw {statusCode: 400, message: 'There is no such service to add!'};
+  }
+  const alreadypurchased = await accountCollection.findOne({_id: new ObjectId(data.AccountId)});
+  if(!isItem){
+    throw {statusCode: 400, message: 'There is no such service to add!'};
+  }
+  else{
+    if(alreadypurchased.PlanPurchased.length!=0){
+      let plans = alreadypurchased.PlanPurchased;
+      plans.forEach(element => {
+       if(element.item_id == data.itemId){
+        throw {statusCode: 400, message: 'Service already purchased!'};
+       }
+      });
+    }
   }
 //   console.log(isItem.Price);
 let newCartItem = {

@@ -6,7 +6,7 @@ const { createUser,checkUser } = require('../data/auth');
 const { authorizeUser } = require('../data/authorized');
 
 router.route('/').get(authorizeUser,async (req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
     if(req.user) {
       return res
           .status(200)

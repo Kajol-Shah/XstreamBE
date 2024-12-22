@@ -33,7 +33,7 @@ const getItems = async ( data) => {
 //   console.log(isItem.Price);
     
     order.tax = (parseFloat(10/100) * parseFloat(order.total)).toFixed(2);
-    order.grandTotal = (parseFloat(order.total+order.tax)).toFixed(2);
+    order.grandTotal = (parseFloat(total)).toFixed(2);
     order.found = true;
     order.data = isItem;
     return order;
@@ -57,7 +57,7 @@ const updateItems = async ( data,AccountId) => {
     if(cartUpdate.insertedCount === 0){
       throw {statusCode: 500, message: 'Internal Server Error'};
     }
-    let accountUpdate = await accountCollection.updateOne({_id:new ObjectId(AccountId)},{ $push: { PlanPurchased: item.itemId } });
+    let accountUpdate = await accountCollection.updateOne({_id:new ObjectId(AccountId)},{ $push: { PlanPurchased: {item_id:item.itemId,start:new Date()} } });
     if(accountUpdate.insertedCount === 0){
       throw {statusCode: 500, message: 'Internal Server Error'};
     }
