@@ -35,6 +35,9 @@ app.set('view engine', 'handlebars');
 
 // configRoutes(app);
 app.use('/', './routes/index');
+app.use('*', (req, res) => {
+  res.status(404).send("Page not found");
+});
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
