@@ -24,4 +24,4 @@ const constructorMethod = (app) => {
     res.status(404).send("Page not found");
   });
 };
-module.exports = constructorMethod;
+module.exports = {constructorMethod};
