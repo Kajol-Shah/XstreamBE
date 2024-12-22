@@ -11,7 +11,7 @@ const { authorizeUser } = require('../data/authorized');
   
 // })
 
-router.route('/').get(authorizeUser,async (req, res) => {
+router.route('/').get(async (req, res) => {
  try{
   if(req.user) {
     return res
