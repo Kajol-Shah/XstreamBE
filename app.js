@@ -32,8 +32,9 @@ app.engine('handlebars', handlebarsInstance.engine);
 app.set('view engine', 'handlebars');
 
 // Configure routes
-configRoutes(app);
 
+// configRoutes(app);
+app.use('/', './routes/auth');
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
