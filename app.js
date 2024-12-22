@@ -32,10 +32,10 @@ app.set("view engine", "handlebars");
 app.use(express.json())
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-// app.use("/",configRoutes);
+app.use("/",configRoutes);
 app.use('/public', static);
 
-configRoutes(app);
+// configRoutes(app);
 app.listen(3000,()=>
 
   console.log('Server started on port:3000')
