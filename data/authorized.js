@@ -8,7 +8,7 @@ dotenv.config({
     path:'./.env'
 })
 const authorizeUser = async (req,res,next) => {
-    // console.log("auth");
+    console.log("auth");
     if(!req.cookies.userSave){
         return next();
         
