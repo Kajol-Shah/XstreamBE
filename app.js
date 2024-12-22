@@ -34,7 +34,14 @@ app.set('view engine', 'handlebars');
 // Configure routes
 
 // configRoutes(app);
-app.use('/', './routes/auth');
+app.use('/', './routes/index');
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+      message: err.message,
+      error: {}
+  });
+});
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
