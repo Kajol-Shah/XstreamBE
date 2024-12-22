@@ -45,6 +45,8 @@ app.use(function(err, req, res, next) {
       error: {}
   });
 });
+app.use(app.router);
+routes.initialize(app);
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
