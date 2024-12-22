@@ -5,7 +5,7 @@ const helper = require('../helper');
 const { createUser,checkUser } = require('../data/auth');
 const { authorizeUser } = require('../data/authorized');
 
-router.route('/').get(async (req, res) => {
+router.route('/').get(authorizeUser,async (req, res) => {
   console.log(req.user);
     if(req.user) {
       return res
