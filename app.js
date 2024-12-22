@@ -26,17 +26,17 @@ const handlebarsInstance = exphbs.create({
 
 
 // view engine setup
-
-app.engine("handlebars", handlebarsInstance.engine);
-app.set("view engine", "handlebars");
 app.use(express.json())
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.use("/",configRoutes);
+app.engine("handlebars", handlebarsInstance.engine);
+app.set("view engine", "handlebars");
 app.use('/public', static);
+app.use("/",configRoutes);
+
 app.use((err, req, res, next) => {
   console.error('Error:', err.stack);
-  res.status(500).send('Internal Server Error');
+  res.status(500).send(err.stack);
 });
 // configRoutes(app);
 app.listen(3000,()=>
