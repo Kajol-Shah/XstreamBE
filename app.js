@@ -1,5 +1,5 @@
 const express = require('express');
-// const configRoutes = require('./routes/index');
+const {constructorMethod} = require('./routes');
 const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars');
@@ -33,8 +33,8 @@ app.set('view engine', 'handlebars');
 
 // Configure routes
 
-// configRoutes(app);
-app.use('/', './routes');
+constructorMethod(app);
+
 app.use('*', (req, res) => {
   res.status(404).send("Page not found");
 });
