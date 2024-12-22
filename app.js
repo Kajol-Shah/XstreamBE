@@ -10,14 +10,14 @@ const static = express.static(__dirname + '/public');
 // Create a Handlebars instance with helpers and partials directory
 const handlebarsInstance = exphbs.create({
   defaultLayout: 'main',
-  helpers: {
-    asJSON: (obj, spacing) => {
-      if (typeof spacing === 'number') {
-        return new Handlebars.SafeString(JSON.stringify(obj, null, spacing));
-      }
-      return new Handlebars.SafeString(JSON.stringify(obj));
-    },
-  },
+  // helpers: {
+  //   asJSON: (obj, spacing) => {
+  //     if (typeof spacing === 'number') {
+  //       return new Handlebars.SafeString(JSON.stringify(obj, null, spacing));
+  //     }
+  //     return new Handlebars.SafeString(JSON.stringify(obj));
+  //   },
+  // },
   partialsDir: ['views/partials/'], // Specify the partials directory
 });
 
