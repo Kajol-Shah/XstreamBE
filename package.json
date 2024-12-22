@@ -1,12 +1,9 @@
 {
   "name": "backend",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
-  },
-  "engines": {
-    "node": "20.0"
   },
   "author": "Kajol",
   "license": "MIT",
