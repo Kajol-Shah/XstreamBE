@@ -11,7 +11,15 @@ const Handlebars = require('handlebars');
 
 const handlebarsInstance = exphbs.create({
   defaultLayout: 'main',
-  layoutsDir: __dirname + '/views/layouts/',
+  // Specify helpers which are only registered on this instance.
+  helpers: {
+    asJSON: (obj, spacing) => {
+      if (typeof spacing === 'number')
+        return new Handlebars.SafeString(JSON.stringify(obj, null, spacing));
+
+      return new Handlebars.SafeString(JSON.stringify(obj));
+    }
+  },
   partialsDir: ['views/partials/']
 });
 
@@ -21,6 +29,9 @@ app.engine("handlebars", handlebarsInstance.engine);
 app.set("view engine", "handlebars");
 app.use(cookieParser());
 configRoutes(app);
+app.get('/', (req, res) => {
+  res.send('<h1>Hello, world!</h1>');
+});
 app.listen(3000,()=>
 
     console.log('Server started on port:3000')
