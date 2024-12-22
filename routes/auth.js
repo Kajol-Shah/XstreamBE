@@ -24,13 +24,7 @@ router.route('/').get(async (req, res) => {
       });
 } else {     
   console.log("inn");
-  return res
-  .status(200)
-  .render('pages/homePage',{
-  partial: "home-script",
-  css: "home-css",
-  title:"Home All",
-});
+  return res.send("hello world");
 }
  
 
