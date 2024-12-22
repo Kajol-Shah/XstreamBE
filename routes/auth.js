@@ -12,7 +12,7 @@ const { authorizeUser } = require('../data/authorized');
 // })
 
 router.route('/').get(async (req, res) => {
- try{
+ 
   if(req.user) {
     return res
         .status(200)
@@ -32,20 +32,8 @@ router.route('/').get(async (req, res) => {
   title:"Home All",
 });
 }
- }
-catch(e){
-  if(e.statusCode===500){
-    return res
-    .status(500).send({hasErrors: true, error: e.message});
-  }
-  if(e.statusCode) {
-    return res
-    .status(400).send({hasErrors: true, error: e.message});
-  } else {
-    return res
-    .status(400).send({hasErrors: true, error: e.message});
-  }
-}
+ 
+
   })
 
 
