@@ -1,39 +1,43 @@
 const express = require('express');
-const app = express();
-const static = express.static(__dirname + "/public");
 const configRoutes = require('./routes/index');
-const cookieParser = require("cookie-parser");
+const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
-app.use('/public', static);
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
 const Handlebars = require('handlebars');
 
+const app = express();
+const static = express.static(__dirname + '/public');
+
+// Create a Handlebars instance with helpers and partials directory
 const handlebarsInstance = exphbs.create({
   defaultLayout: 'main',
-  // Specify helpers which are only registered on this instance.
   helpers: {
     asJSON: (obj, spacing) => {
-      if (typeof spacing === 'number')
+      if (typeof spacing === 'number') {
         return new Handlebars.SafeString(JSON.stringify(obj, null, spacing));
-
+      }
       return new Handlebars.SafeString(JSON.stringify(obj));
-    }
+    },
   },
-  partialsDir: ['views/partials/']
+  partialsDir: ['views/partials/'], // Specify the partials directory
 });
 
-
-
-app.engine("handlebars", handlebarsInstance.engine);
-app.set("view engine", "handlebars");
+// Middleware setup
+app.use(express.json());
 app.use(cookieParser());
-configRoutes(app);
-app.get('/', (req, res) => {
-  res.send('<h1>Hello, world!</h1>');
-});
-app.listen(3000,()=>
+app.use(express.urlencoded({ extended: true }));
+app.use('/public', static);
 
-    console.log('Server started on port:3000')
-)
+// View engine setup
+app.engine('handlebars', handlebarsInstance.engine);
+app.set('view engine', 'handlebars');
+
+// Configure routes
+configRoutes(app);
+
+// Start the server
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server started on port: ${PORT}`);
+});
+
 module.exports = app;
