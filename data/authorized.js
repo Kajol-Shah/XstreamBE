@@ -10,9 +10,9 @@ dotenv.config({
 const authorizeUser = async (req,res,next) => {
     // console.log("auth");
     if(!req.cookies.userSave){
-        return next();
+        // return next();
         
-        // res.status(400).send( {hasErrors: true, error: 'UnAuthorizied Access', title: "Authorization1"});
+        res.status(400).send( {hasErrors: true, error: 'UnAuthorizied Access', title: "Authorization1"});
     }
    
     try{
@@ -33,8 +33,8 @@ const authorizeUser = async (req,res,next) => {
         }
         else{
                 // console.log(user)
-                // res.status(500).send( {hasErrors: true, error: "Internal Server Error", title: "Authorization"});
-                return next();
+                res.status(500).send( {hasErrors: true, error: "Internal Server Error", title: "Authorization"});
+                // return next();
         }
     }
     catch(err){
