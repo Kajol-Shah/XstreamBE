@@ -157,7 +157,7 @@ const checkUser = async (data) => {
     let userAuth = {authenticatedUser: false}
 
     const userCollection = await users();
-    const user = await userCollection.findOne({Email: data.Email});
+    const user = await userCollection.findOne({Email: { $regex: new RegExp(data.Email, 'i')}});
     if(!user){
         throw {statusCode: 400, message: "Either the username or password is invalid"};
     }
