@@ -233,4 +233,17 @@ nav {
       display: none;
     }
   }
-  
+  .error-note {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #c08383;
+    border-left: 4px solid #d32f2f;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #795548;
+}
+
+.error-note span {
+    font-weight: bold;
+    color: #d32f2f;
+}

@@ -24,6 +24,20 @@ body {
     background-position: center;
     position: relative;
 }
+.premium-note {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #ffecb3;
+  border-left: 4px solid #ffa000;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #795548;
+}
+
+.premium-note span {
+  font-weight: bold;
+  color: #d32f2f;
+}
 
 .gem-orange
 {

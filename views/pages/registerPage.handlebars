@@ -42,6 +42,9 @@
                    </div>
                    <div class="form-inner">
                       <form action="/login" class="login" method="POST">
+                      {{#if hasErrors}}
+                              <p class="error-note"><span>Error: </span>{{error}}</p>
+                        {{/if}}
                          <div class="field">
                             <input type="text" placeholder="Email Address" name="Email" required>
                          </div>
@@ -49,7 +52,7 @@
                             <input type="password" placeholder="Password" name="Password" required>
                          </div>
                          <div class="pass-link">
-                            <a href="#">Forgot password?</a>
+                            {{!-- <a href="#">Forgot password?</a> --}}
                          </div>
                          <div class="field btn">
                             <div class="btn-layer"></div>
@@ -65,8 +68,12 @@
                       </form>
                       <form action="/register" method="POST" class="signup">
                         {{#if hasErrors}}
-                              <p class="error">{{error}}</p>
-                            {{/if}}
+                              <p class="error-note"><span>Error: </span>{{error}}</p>
+                        {{/if}}
+                        <p class="premium-note"><span>Note: </span>Password should be 6 Characters long and should include: 
+                        <br>1. Atleast one Uppercase
+                        <br>2. Atleast one Specail Character
+                        <br>3. Atleast one Number</p>
                         <div class="container-1">
                           
                             <div class="field">
