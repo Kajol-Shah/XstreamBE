@@ -8,6 +8,7 @@ const phoneRoutes = require('./phone');
 const cartRoutes = require('./cart');
 const serviceRoutes = require('./service');
 const checkoutRoutes = require('./checkout');
+const accountRoutes = require('./account');
 const constructorMethod = (app) => {
   app.use('/', authRoutes);
   app.use('/home', homeRoutes);
@@ -20,6 +21,7 @@ const constructorMethod = (app) => {
   app.use('/cart', cartRoutes);
   app.use('/service', serviceRoutes);
   app.use('/checkout', checkoutRoutes);
+  app.use('/account', accountRoutes);
   app.use('*', (req, res) => {
     res.status(404).send("Page not found");
   });

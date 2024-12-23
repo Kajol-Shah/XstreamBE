@@ -83,8 +83,8 @@ router.route('/').get(authorizeUser,async (req, res) => {
               title:"Select Services",
               user:true,
               data:Tv,
-              phone:Phone.data,
-              internet:Internet.data,
+              phone:Phone,
+              internet:Internet,
             });
             }
                 
