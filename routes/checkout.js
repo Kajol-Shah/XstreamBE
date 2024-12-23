@@ -1,10 +1,13 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const router = express.Router();
 const { authorizeUser } = require('../data/authorized');
 const { getItems,updateItems,validation } = require('../data/checkout');
 const helper = require('../helper');
 const crypto = require('crypto');
-
+dotenv.config({
+    path:'./.env'
+})
 router.route('/').get(authorizeUser,async (req, res) => {
     
       if(req.user) {
@@ -140,7 +143,7 @@ router.route('/').get(authorizeUser,async (req, res) => {
           } = req.body;
 
   // The security key that you use for hashing (provided by IPpay)
-  const securityKey = 'iuKdUBYP';
+  const securityKey = process.env.securitykey;
 
   // Generate a hash to verify the ReturnToken (SHA1 hash of SecurityKey + TransactionID + AuthCode)
   const generatedReturnToken = generateReturnToken(securityKey, TransactionID, AuthCode);
@@ -163,7 +166,8 @@ router.route('/').get(authorizeUser,async (req, res) => {
             if(checkout){
               const update = await updateItems(checkout.data,CustomField1);
               if(update.updated===true){
-                res.status(200).send('Transaction successful');
+                // alert("Transcation Successful");
+                res.status(200).redirect('/account');
               }
             }
             
@@ -185,6 +189,7 @@ router.route('/').get(authorizeUser,async (req, res) => {
           
       } else {
           // console.log('Transaction Failed:', ResponseText);
+          
           res.status(400).send('Transaction failed');
       }
   } else {
