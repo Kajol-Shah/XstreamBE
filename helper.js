@@ -38,7 +38,9 @@ function validationFunction(data){
     if(!data.Email || typeof(data.Email)!=='string' || !data.Email.trim().length ){
       throw {statusCode: 400, message: "Please provide a valid Email!"};
     } 
-    
+    if(!validator.validate(data.Email)){
+      throw {statusCode: 400, message: 'Please enter valid email'};
+    }
   
   }
   function validationLogin(data){
@@ -46,6 +48,9 @@ function validationFunction(data){
     if(!data.Email || typeof(data.Email)!=='string' || !data.Email.trim().length ){
       throw {statusCode: 400, message: "Please provide a valid Email!"};
     } 
+    if(!validator.validate(data.Email)){
+      throw {statusCode: 400, message: 'Please enter valid email'};
+    }
     if(!data.Password || typeof(data.Password)!=='string' || !data.Password.trim().length ){
       throw {statusCode: 400, message: "Please provide a valid Password!"};
     } 
