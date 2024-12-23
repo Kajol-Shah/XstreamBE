@@ -75,13 +75,13 @@
                 <div class="modal-content">
                     <button class="close-btn" onclick="closeEditProfileModal()">×</button>
                     <h3>Edit Profile</h3>
-                    <form id="editProfileForm">
-                        <input type="text" id="firstName" placeholder="First Name" required value="John">
-                        <input type="text" id="lastName" placeholder="Last Name" required value="Doe">
-                        <input type="email" id="email" placeholder="Email" required value="john.doe@example.com">
-                        <input type="text" id="country" placeholder="Country" required value="United States">
-                        <input type="date" id="birthday" placeholder="Birthday" required value="01-15-1990">
+                    <form id="editProfileForm" >
+                        {{#if data.userDetails}}
+                        <input type="text" id="firstName" placeholder="First Name" required value={{data.userDetails.FirstName}}>
+                        <input type="text" id="lastName" placeholder="Last Name" required value={{data.userDetails.LastName}}>
+                        <input type="email" id="email" placeholder="Email" required value={{data.userDetails.Email}}>
                         <button type="submit">Save Changes</button>
+                        {{/if}}
                     </form>
                 </div>
             </div>

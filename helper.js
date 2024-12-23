@@ -28,6 +28,19 @@ function validationFunction(data){
     }
   
   }
+  function validationProfile(data){
+    if(!data.FirstName || typeof(data.FirstName)!=='string' || !data.FirstName.trim().length){
+      throw {statusCode: 400, message: "Please provide a valid First Name!"};
+    } 
+    if(!data.LastName || typeof(data.LastName)!=='string' || !data.LastName.trim().length ){
+      throw {statusCode: 400, message: "Please provide a valid Last Name!"};
+    } 
+    if(!data.Email || typeof(data.Email)!=='string' || !data.Email.trim().length ){
+      throw {statusCode: 400, message: "Please provide a valid Email!"};
+    } 
+    
+  
+  }
   function validationLogin(data){
     
     if(!data.Email || typeof(data.Email)!=='string' || !data.Email.trim().length ){
@@ -52,5 +65,6 @@ function validationFunction(data){
   module.exports = {
     validationFunction,
     validationLogin,
-    validObjectId
+    validObjectId,
+    validationProfile
   };

@@ -92,3 +92,51 @@ function confirmAppointment(date, time) {
 }
 
 document.getElementById('schedule-btn').addEventListener('click', openScheduler);
+
+const editProfileModal = document.getElementById("editProfileModal");
+
+editProfileModal.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let firstName = document.getElementById("firstName").value;
+  let lastName = document.getElementById("lastName").value;
+  let email = document.getElementById("email").value;
+//   console.log(firstName);
+  fetch('/profileEdit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json' // Adjust if necessary
+    },
+    body: JSON.stringify({FirstName: firstName,LastName:lastName,Email:email}) // If sending data
+  })
+  .then(response => {
+    // Handle the response
+    if (response.ok) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Profile Updated successfully!',
+            confirmButtonText: 'OK'
+    });
+    setTimeout(() => {
+        location.reload();
+      }, 1000);
+    
+    } else {
+      throw new Error(response);
+    }
+  })
+  .then(data => {
+    // Do something with the data
+    // console.log(data);
+  })
+  .catch(error => {
+    // Handle errors
+    // console.log('Error:', error);
+    Swal.fire({
+          icon: 'error',
+          title: 'Cannot edit profile!',
+          confirmButtonText: 'OK'
+          
+  });
+});
+});

@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const helper = require('../helper');
-const { createUser,checkUser } = require('../data/auth');
+const { createUser,checkUser,updateUser } = require('../data/auth');
 const { authorizeUser } = require('../data/authorized');
 
 router.route('/').get(authorizeUser,async (req, res) => {
@@ -27,7 +27,41 @@ router.route('/').get(authorizeUser,async (req, res) => {
   }
   })
 
-
+  router.route('/profileEdit').post(authorizeUser,async (req, res) => {
+      if(req.user) {
+        try 
+        {
+        
+        let requestData = req.user.id;
+        let data = req.body;
+        helper.validationProfile(data);
+          helper.validObjectId(requestData);
+          const details = await updateUser(requestData,data);
+          if(details.updated){
+              // console.log(details);
+              return res.status(200).send("Profile Updated Successfully!")
+          }
+          }
+          catch(e) {
+            if(e.statusCode===500){
+              return res
+              .status(500).send({hasErrors: true, error: e.message});
+            }
+            if(e.statusCode) {
+              return res
+              .status(400).send({hasErrors: true, error: e.message});
+            } else {
+              return res
+              .status(400).send({hasErrors: true, error: e.message});
+            }
+          }
+        
+    } else {     
+      return res
+      .status(400).send({hasErrors: true, error: "Cannot update profile"});
+    }
+    })
+  
 
   router.route('/register').post(async (req, res) => {
     let requestData = req.body;

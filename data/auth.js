@@ -180,7 +180,29 @@ const checkUser = async (data) => {
 
     
   };
+  const updateUser = async (id,data) => { 
+    id= id.trim();
+      try{
+        helper.validObjectId(id);
+        helper.validationProfile(data);
+      } catch (e) {
+          throw e;
+      }
+    let update = {updated: false};
+    const usersCollection = await users();
+    let userUpdate = await usersCollection.updateOne({_id:new ObjectId(id)},{ $set: { FirstName: data.FirstName,LastName:data.LastName,Email:data.Email} });
+    if(userUpdate.insertedCount === 0){
+      throw {statusCode: 500, message: 'Internal Server Error'};
+    }
+   
+    update.updated = true;
+    return update;
+  
+  
+  
+  };
 module.exports = {
   createUser,
-  checkUser
+  checkUser,
+  updateUser
 };
