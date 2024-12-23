@@ -43,10 +43,10 @@ router.route('/').get(authorizeUser,async (req, res) => {
     } else {     
         return res
         .status(200)
-        .render('pages/accountPage',{
-        partial: "account-script",
-        css: "account-css",
-        title:"Account",
+        .render('pages/registerPage',{
+        partial: "register-script",
+        css: "register-css",
+        title:"Register",
       });
     }
     })
