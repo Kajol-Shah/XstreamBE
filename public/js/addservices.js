@@ -1,4 +1,20 @@
+document.addEventListener("DOMContentLoaded", function () {
 
+  // const spanish = document.getElementById('spanishbtn');
+  const sports = document.getElementById('sportsbtn');
+  const hbo = document.getElementById('hbobtn')
+  const button1 = document.getElementById('preferredplan');
+  const button2 = document.getElementById('expandedplan');
+  const featuresElement = document.querySelector('#subplans');
+  if(sports.innerHTML==="Remove Sports" || hbo.innerHTML==="Remove HBO"){
+    featuresElement.style.display = 'block';
+  }
+  if(button1.innerHTML==="Remove Plan" || button2.innerHTML==="Remove Plan"){
+    featuresElement.style.display = 'block';
+  }
+
+
+});
 
 document.getElementById('expandedplan').addEventListener('click', function () {
   const featuresElement = document.querySelector('#subplans');
@@ -582,86 +598,69 @@ document.getElementById('sportsbtn').addEventListener('click', function () {
   }
   
 });
-document.getElementById('spanishbtn').addEventListener('click', function () {
-  const button = document.getElementById('spanishbtn');
-  if (button.innerHTML== 'Add Spanish') {
+// document.getElementById('spanishbtn').addEventListener('click', function () {
+//   const button = document.getElementById('spanishbtn');
+//   if (button.innerHTML== 'Add Spanish') {
     
     
-    fetch('/cart/add', {
-      method: 'POST', // Or GET, PUT, DELETE, etc.
-      headers: {
-        'Content-Type': 'application/json' // Adjust if necessary
-      },
-      body: JSON.stringify({itemId: button.getAttribute("value")}) // If sending data
-    })
-    .then(response => {
-      // Handle the response
-      if (response.ok) {
-        button.innerHTML  = 'Remove Spanish';
-      } else {
-        throw new Error('Network response was not ok');
-      }
-    })
-    .then(data => {
-      // Do something with the data
-      console.log(data);
-    })
-    .catch(error => {
-      // Handle errors
-      // console.log('Error:', error);
-      Swal.fire({
-            icon: 'error',
-            title: 'Already Purchased or Cannot add to cart!',
-            confirmButtonText: 'OK'
-    });
-  });
-  } else {
+//     fetch('/cart/add', {
+//       method: 'POST', // Or GET, PUT, DELETE, etc.
+//       headers: {
+//         'Content-Type': 'application/json' // Adjust if necessary
+//       },
+//       body: JSON.stringify({itemId: button.getAttribute("value")}) // If sending data
+//     })
+//     .then(response => {
+//       // Handle the response
+//       if (response.ok) {
+//         button.innerHTML  = 'Remove Spanish';
+//       } else {
+//         throw new Error('Network response was not ok');
+//       }
+//     })
+//     .then(data => {
+//       // Do something with the data
+//       console.log(data);
+//     })
+//     .catch(error => {
+//       // Handle errors
+//       // console.log('Error:', error);
+//       Swal.fire({
+//             icon: 'error',
+//             title: 'Already Purchased or Cannot add to cart!',
+//             confirmButtonText: 'OK'
+//     });
+//   });
+//   } else {
    
-    fetch('/cart/remove', {
-      method: 'POST', // Or GET, PUT, DELETE, etc.
-      headers: {
-        'Content-Type': 'application/json' // Adjust if necessary
-      },
-      body: JSON.stringify({itemId: button.getAttribute("value")}) // If sending data
-    })
-    .then(response => {
-      // Handle the response
-      if (response.ok) {
-        button.innerHTML  = 'Add Spanish';
-      } else {
-        throw new Error('Network response was not ok');
-      }
-    })
-    .then(data => {
-      // Do something with the data
-      console.log(data);
-    })
-    .catch(error => {
-      // Handle errors
-      // console.log('Error:', error);
-      Swal.fire({
-            icon: 'error',
-            title: 'Cannot remove from cart!',
-            confirmButtonText: 'OK'
-    });
-});
-  }
+//     fetch('/cart/remove', {
+//       method: 'POST', // Or GET, PUT, DELETE, etc.
+//       headers: {
+//         'Content-Type': 'application/json' // Adjust if necessary
+//       },
+//       body: JSON.stringify({itemId: button.getAttribute("value")}) // If sending data
+//     })
+//     .then(response => {
+//       // Handle the response
+//       if (response.ok) {
+//         button.innerHTML  = 'Add Spanish';
+//       } else {
+//         throw new Error('Network response was not ok');
+//       }
+//     })
+//     .then(data => {
+//       // Do something with the data
+//       console.log(data);
+//     })
+//     .catch(error => {
+//       // Handle errors
+//       // console.log('Error:', error);
+//       Swal.fire({
+//             icon: 'error',
+//             title: 'Cannot remove from cart!',
+//             confirmButtonText: 'OK'
+//     });
+// });
+//   }
   
-});
-document.addEventListener("DOMContentLoaded", function () {
-
-  const spanish = document.getElementById('spanishbtn');
-  const sports = document.getElementById('sportsbtn');
-  const hbo = document.getElementById('hbobtn')
-  const button1 = document.getElementById('preferredplan');
-  const button2 = document.getElementById('expandedplan');
-  const featuresElement = document.querySelector('#subplans');
-  if(spanish.innerHTML==="Remove Spanish" || sports.innerHTML==="Remove Sports" || hbo.innerHTML==="Remove HBO"){
-    featuresElement.style.display = 'block';
-  }
-  if(button1.innerHTML==="Remove Plan" || button2.innerHTML==="Remove Plan"){
-    featuresElement.style.display = 'block';
-  }
-
-
-});
+// });

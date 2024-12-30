@@ -427,9 +427,11 @@ table td img {
   border-radius: 50%; /* Make the image round */
   margin-right: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.816);
-  vertical-align: middle;
+  /* vertical-align: middle; */
   object-fit:contain; /* Ensures the image fits well inside the circular frame */
-  
+  overflow: hidden; /* Ensures the image stays within the circle */
+ display: block;
+ margin-left: 25%;
   
 }
 

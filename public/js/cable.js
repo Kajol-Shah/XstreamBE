@@ -455,3 +455,19 @@ document.addEventListener("DOMContentLoaded", function () {
         slideTrack3.appendChild(slide3);
     });
 });
+document.querySelectorAll('.read-more-btn').forEach((button) => {
+    button.addEventListener('click', function () {
+      const card = this.closest('.card'); // Select the closest card element
+      const descriptionWrapper = card.querySelector('.card-description');
+  
+      // Toggle the expanded class
+      if (descriptionWrapper.classList.contains('expanded')) {
+        descriptionWrapper.classList.remove('expanded');
+        this.textContent = 'Read More';
+      } else {
+        descriptionWrapper.classList.add('expanded');
+        this.textContent = 'Read Less';
+      }
+    });
+  });
+  

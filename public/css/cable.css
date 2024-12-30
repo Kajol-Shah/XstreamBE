@@ -317,7 +317,9 @@ text-transform: uppercase;
   border: 0;
   width: 100%;
   margin-inline: auto;
+
 }
+
 .card:hover{
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
   transform: scale(1.11);
@@ -374,8 +376,41 @@ text-transform: uppercase;
   color: hsla(0, 0%, 100%, 0.5);
   font-size: 20px;
   max-width: 470px;
+  max-height: 200px; /* Initial height for collapsed state */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.card-description.expanded {
+  max-height: 400px; /* Expanded height */
+  overflow-y: auto; /* Enable scroll if content exceeds expanded height */
+}
+.read-more-btn {
+  margin-top: 15%;
+  background-color: #ffa039;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 36px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 17px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
+.read-more-btn:hover {
+  background-color: #2b2b2c;
+}
 
 @media screen and (max-width: 1152px) {
   .gradient-cards {
@@ -567,6 +602,18 @@ display: block;
   color: #00bfa5;
   text-align: center;
   padding-right: 10px;
+}
+.pricing-empty:before {
+  vertical-align: middle;
+ content: "\f058";
+  font-family: "Font Awesome 5 Free";
+  color: #080509;
+  text-align: center;
+  padding-right: 10px;
+}
+.pricing-empty
+{
+border-top: 1px solid #7273723b;
 }
 
 .strike:before
@@ -787,7 +834,8 @@ overflow:hidden;
 .card-plan{
   border-radius: 16px;
   box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25);
-  max-width: 300px;
+  max-width: 350px;
+ 
 }
 
 .plan.Extended{
@@ -843,7 +891,7 @@ overflow:hidden;
   background: linear-gradient(71deg, #080509, #1a171c, #080509);
   border-radius: 12px;
   position: relative;
-  height: 470px;
+  height: 570px;
 }
 
 .plan .pricing {
@@ -930,6 +978,7 @@ overflow:hidden;
   .gradient-cards2{
       grid-template-columns: repeat(2, 1fr);
       padding-left: 15%;
+      justify-content: center;
     }
  
 }
@@ -937,14 +986,31 @@ overflow:hidden;
 
   .gradient-cards2{
       grid-template-columns: repeat(2, 1fr);
-      padding-left: 8%;
+      width: 100%;
+      justify-content: center;
+    }
+    .plan .inner{
+      width: 100%;
+      height: auto;
+    }
+    .card-plan{
+      width: 100%; 
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 950px) {
 
   .gradient-cards2{
       grid-template-columns: 1fr;
-      padding-left: 15%;
+      width: 100%;
+      height: auto;
+      justify-content: center;
+    }
+    .plan .inner{
+      height: auto;
+      width: 100%;
+    }
+    .card-plan{
+      width: 100%; 
     }
 }
 
@@ -1579,19 +1645,19 @@ top: 0;
 .slide-track{
 display: flex;
 width: calc(200%); /* Double the width to account for duplicate slides */
-animation: scroll-right 34s linear infinite;
+animation: scroll-right 18s linear infinite;
  
 }
 .slide-track2{
 display: flex;
 width: calc(200%); /* Double the width to account for duplicate slides */
-animation: scroll-left 34s linear infinite;
+animation: scroll-left 10s linear infinite;
  
 }
 .slide-track3 {
 display: flex;
 width: calc(200%); /* Double the width to account for duplicate slides */
-animation: scroll-right 34s linear infinite;
+animation: scroll-right 30s linear infinite;
  
 }
 

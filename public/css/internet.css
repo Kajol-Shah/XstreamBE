@@ -173,7 +173,25 @@ body {
     max-width: 470px;
 
   }
+/* Feature Card Button */
+.feature-card-btn {
+  background-color: #FFAB00;
+  color: #0f0e0e;
+  padding: 10px 40px;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  font-weight: 700;
+}
 
+/* Feature Card Button Hover Effects */
+.feature-card-btn:hover {
+  font-size: 1.2rem;
+  color: #0a0a0a;
+}
  
   @media screen and (max-width: 1152px) {
     .gradient-cards {

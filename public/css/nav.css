@@ -14,10 +14,10 @@ nav {
     align-items: center;
   }
   nav .logo img {
-    height: 300px;
+    height: 400px;
     width: auto;
-    margin-left: -35px;
-    margin-top: -20px;
+    margin-left: -55px;
+    /* margin-top: -10px; */
   }
   /* nav .logo h1 {
     font-size: 1.1rem;
