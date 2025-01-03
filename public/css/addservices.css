@@ -961,7 +961,7 @@ margin-left: 10px;
 
 /* Show the label when hovering over the button */
 button:hover .plan-label {
-display: inline;
+display: block;
 }
 
 
@@ -997,10 +997,29 @@ margin-right: 5px;
     flex-direction: column;
     align-items: center;
   }
-
+.card-content{
+  padding: 8%;
+}
+.card-title{
+  padding-left: 8%;
+  padding-right: 8%;
+}
   .card {
       width: 100%;
       max-width: 400px;
+      height: auto;
+      padding-bottom: 8%;
+    }
+    .speed-options {
+      
+      flex-direction: column;
+      justify-content: center;
+    }
+    .speed-options button{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 60%;
+      margin-left: 15%;
     }
 }
 
