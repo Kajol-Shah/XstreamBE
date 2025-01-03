@@ -920,7 +920,8 @@ overflow:hidden;
 .card-content p {
   font-size: 22px;
   line-height: 1.6;
-  color: #666;
+  /* color: #666; */
+  color: #fff;
   margin-bottom: 20px;
 }
 
