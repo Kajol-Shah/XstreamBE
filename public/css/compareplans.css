@@ -279,7 +279,8 @@ border-radius: 0px;
   font-weight: bold;
   letter-spacing: 1px;
   text-align: center; 
-  color: #605d5d;
+  /* color: #605d5d; */
+  color: #fff;
   margin-bottom: 10px;
 }
 .container {
@@ -576,3 +577,32 @@ text-align: center;
 
 
 
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #000;
+  overflow: hidden;
+  border-radius: 10px;
+ margin-top: 2%;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #fff;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #ffa039;
+  color: white;
+}

@@ -285,7 +285,8 @@ border-radius: 0px;
   font-weight: bold;
   letter-spacing: 1px;
   text-align: center; 
-  color: #605d5d;
+  /* color: #605d5d; */
+  color: #fff;
   margin-bottom: 10px;
 }
 
