@@ -82,6 +82,8 @@ const validation = async ( data,AccountId) => {
   const accountCollection = await account();
   let validData = {};
   let Premium =false;
+  let Expanded = false;
+  let Expanded_valid = false;
   let Premium_valid = false;
   for (const item of data.data) {
     let isItem = await itemCollection.findOne({_id: new ObjectId(item.itemId)});
@@ -98,8 +100,14 @@ const validation = async ( data,AccountId) => {
       else if(isItem.Name==="XSTREAM Sports"|| isItem.Name==="XSTREAM HBO" || isItem.Name==="XSTREAM Spanish"){
         Premium=true;
       }
-      else if(isItem.Name==="XSTREAM Preferred" || isItem.Name==="XSTREAM Expanded"){
+      else if(isItem.Name==="XSTREAM Expanded"){
+        Expanded = true;
+      }
+      else if(isItem.Name==="XSTREAM Preferred"){
         Premium_valid=true;
+        if(Expanded){
+          Expanded_valid= true;
+        }
       }
     }
   }
@@ -119,8 +127,14 @@ const validation = async ( data,AccountId) => {
             else if(isItem.Name==="25MB"|| isItem.Name==="50MB" || isItem.Name==="100MB"){
               validData.basicInternet=true;
             }
-            else if(isItem.Name==="XSTREAM Preferred" || isItem.Name==="XSTREAM Expanded"){
+            else if(isItem.Name==="XSTREAM Expanded"){
+              Expanded = true;
+            }
+            else if(isItem.Name==="XSTREAM Preferred"){
               Premium_valid=true;
+              if(Expanded){
+                Expanded_valid= true;
+              }
             }
           }
     }
@@ -131,6 +145,14 @@ const validation = async ( data,AccountId) => {
       }
       else{
         throw {statusCode: 400, message: 'Select all minimum plans'};
+      }
+    }
+    if(Expanded){
+      if(Expanded_valid){
+        validate.validated = true;
+      }
+      else{
+        throw {statusCode: 400, message: 'Select Preferred plan to add Expanded plan'};
       }
     }
     if(Premium){

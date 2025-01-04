@@ -167,7 +167,7 @@ router.route('/').get(authorizeUser,async (req, res) => {
               const update = await updateItems(checkout.data,CustomField1);
               if(update.updated===true){
                 // alert("Transcation Successful");
-                res.status(200).redirect('https://xstream-psi.vercel.app/account');
+                res.status(200).redirect('https://xstream-be.vercel.app/account');
               }
             }
             
