@@ -36,17 +36,20 @@ document.getElementById('expandedplan').addEventListener('click', function () {
               // Handle the response
               if (response.ok) {
                 button.innerHTML  = 'Remove Plan';
+                document.querySelector('#preferredplan').disabled = true; 
+                document.querySelector('#servicebtn').disabled = true; 
+                document.querySelector('#servicebtn2').disabled = true; 
               } else {
                 throw new Error('Network response was not ok');
               }
             })
             .then(data => {
               // Do something with the data
-              console.log(data);
+              // console.log(data);
             })
             .catch(error => {
               // Handle errors
-              console.log('Error:', error);
+              // console.log('Error:', error);
               Swal.fire({
                     icon: 'error',
                     title: 'Already Purchased or Cannot add to cart!',
@@ -72,13 +75,16 @@ document.getElementById('expandedplan').addEventListener('click', function () {
       // Handle the response
       if (response.ok) {
         button.innerHTML  = 'Add Plan';
+        document.querySelector('#preferredplan').disabled = false; 
+        document.querySelector('#servicebtn').disabled = false; 
+        document.querySelector('#servicebtn2').disabled = false; 
       } else {
         throw new Error('Network response was not ok');
       }
     })
     .then(data => {
       // Do something with the data
-      console.log(data);
+      // console.log(data);
     })
     .catch(error => {
       // Handle errors
@@ -113,13 +119,16 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Remove Plan';
+      document.querySelector('#expanedplan').disabled = true; 
+      document.querySelector('#servicebtn').disabled = true; 
+      document.querySelector('#servicebtn2').disabled = true; 
     } else {
       throw new Error('Network response was not ok');
     }
   })
   .then(data => {
     // Do something with the data
-    console.log(data);
+    // console.log(data);
   })
   .catch(error => {
     // Handle errors
@@ -149,13 +158,16 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Add Plan';
+      document.querySelector('#expanedplan').disabled = true; 
+      document.querySelector('#servicebtn').disabled = true; 
+      document.querySelector('#servicebtn2').disabled = true; 
     } else {
       throw new Error('Network response was not ok');
     }
   })
   .then(data => {
     // Do something with the data
-    console.log(data);
+    // console.log(data);
   })
   .catch(error => {
     // Handle errors
@@ -185,13 +197,16 @@ document.getElementById('servicebtn').addEventListener('click', function () {
       // Handle the response
       if (response.ok) {
         button.innerHTML  = 'Remove Plan';
+        document.querySelector('#expanedplan').disabled = true; 
+      document.querySelector('#preferredplan').disabled = true; 
+      document.querySelector('#servicebtn2').disabled = true; 
       } else {
         throw new Error('Network response was not ok');
       }
     })
     .then(data => {
       // Do something with the data
-      console.log(data);
+      // console.log(data);
     })
     .catch(error => {
       // Handle errors
@@ -215,13 +230,16 @@ document.getElementById('servicebtn').addEventListener('click', function () {
       // Handle the response
       if (response.ok) {
         button.innerHTML  = 'Add Plan';
+        document.querySelector('#expanedplan').disabled = false; 
+        document.querySelector('#preferredplan').disabled = false; 
+        document.querySelector('#servicebtn2').disabled = false; 
       } else {
         throw new Error('Network response was not ok');
       }
     })
     .then(data => {
       // Do something with the data
-      console.log(data);
+      // console.log(data);
     })
     .catch(error => {
       // Handle errors
@@ -251,13 +269,16 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Remove Plan';
+      document.querySelector('#expanedplan').disabled = true; 
+      document.querySelector('#preferredplan').disabled = true; 
+      document.querySelector('#servicebtn').disabled = true; 
     } else {
       throw new Error('Network response was not ok');
     }
   })
   .then(data => {
     // Do something with the data
-    console.log(data);
+    // console.log(data);
   })
   .catch(error => {
     // Handle errors
@@ -281,13 +302,16 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Add Plan';
+      document.querySelector('#expanedplan').disabled = false; 
+      document.querySelector('#preferredplan').disabled = false; 
+      document.querySelector('#servicebtn').disabled = false; 
     } else {
       throw new Error('Network response was not ok');
     }
   })
   .then(data => {
     // Do something with the data
-    console.log(data);
+    // console.log(data);
   })
   .catch(error => {
     // Handle errors
