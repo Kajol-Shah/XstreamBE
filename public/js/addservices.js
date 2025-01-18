@@ -12,7 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
   if(button1.innerHTML==="Remove Plan" || button2.innerHTML==="Remove Plan"){
     featuresElement.style.display = 'block';
   }
+  const radioButtons = document.querySelector(
+    'input[name="internet"]:checked');
+ 
+  
+    if (radioButtons === null) {
+      document.querySelector('input[name="internet"]').checked=true;
+      const button = document.getElementById('internetbtn');
 
+      // Programmatically trigger a click
+      button.click();
+    }
 
 });
 
