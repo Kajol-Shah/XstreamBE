@@ -16,7 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-document.getElementById('expandedplan').addEventListener('click', function () {
+document.getElementById('expandedplan').addEventListener('click', function (event) {
+  if (this.disabled) {
+    event.preventDefault(); // Prevent default behavior
+    return; // Exit early
+}
   const featuresElement = document.querySelector('#subplans');
   const button = document.querySelector('#expandedplan');
   const active = document.querySelector('#preferredplan');
@@ -36,9 +40,9 @@ document.getElementById('expandedplan').addEventListener('click', function () {
               // Handle the response
               if (response.ok) {
                 button.innerHTML  = 'Remove Plan';
-                document.querySelector('#preferredplan').disabled = true; 
-                document.querySelector('#servicebtn').disabled = true; 
-                document.querySelector('#servicebtn2').disabled = true; 
+                document.getElementById('preferredplan').disabled = true; 
+                document.getElementById('servicebtn').disabled = true; 
+                document.getElementById('servicebtn2').disabled = true; 
               } else {
                 throw new Error('Network response was not ok');
               }
@@ -75,9 +79,9 @@ document.getElementById('expandedplan').addEventListener('click', function () {
       // Handle the response
       if (response.ok) {
         button.innerHTML  = 'Add Plan';
-        document.querySelector('#preferredplan').disabled = false; 
-        document.querySelector('#servicebtn').disabled = false; 
-        document.querySelector('#servicebtn2').disabled = false; 
+        document.getElementById('preferredplan').disabled = false; 
+        document.getElementById('servicebtn').disabled = false; 
+        document.getElementById('servicebtn2').disabled = false; 
       } else {
         throw new Error('Network response was not ok');
       }
@@ -99,7 +103,11 @@ document.getElementById('expandedplan').addEventListener('click', function () {
   }
   
 });
-document.getElementById('preferredplan').addEventListener('click', function () {
+document.getElementById('preferredplan').addEventListener('click', function (event) {
+  if (this.disabled) {
+    event.preventDefault(); // Prevent default behavior
+    return; // Exit early
+}
 const featuresElement = document.querySelector('#subplans');
 const button = document.querySelector('#preferredplan');
 const active = document.querySelector('#expandedplan');
@@ -119,9 +127,9 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Remove Plan';
-      document.querySelector('#expanedplan').disabled = true; 
-      document.querySelector('#servicebtn').disabled = true; 
-      document.querySelector('#servicebtn2').disabled = true; 
+      document.getElementById('expandedplan').disabled = true; 
+      document.getElementById('servicebtn').disabled = true; 
+      document.getElementById('servicebtn2').disabled = true; 
     } else {
       throw new Error('Network response was not ok');
     }
@@ -158,9 +166,9 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Add Plan';
-      document.querySelector('#expanedplan').disabled = true; 
-      document.querySelector('#servicebtn').disabled = true; 
-      document.querySelector('#servicebtn2').disabled = true; 
+      document.getElementById('expandedplan').disabled = true; 
+      document.getElementById('servicebtn').disabled = true; 
+      document.getElementById('servicebtn2').disabled = true; 
     } else {
       throw new Error('Network response was not ok');
     }
@@ -181,7 +189,11 @@ if (button.innerHTML== 'Add Plan') {
 }
 
 });
-document.getElementById('servicebtn').addEventListener('click', function () {
+document.getElementById('servicebtn').addEventListener('click', function (event) {
+  if (this.disabled) {
+    event.preventDefault(); // Prevent default behavior
+    return; // Exit early
+}
   const button = document.querySelector('#servicebtn');
   if (button.innerHTML== 'Add Plan') {
     
@@ -197,9 +209,9 @@ document.getElementById('servicebtn').addEventListener('click', function () {
       // Handle the response
       if (response.ok) {
         button.innerHTML  = 'Remove Plan';
-        document.querySelector('#expanedplan').disabled = true; 
-      document.querySelector('#preferredplan').disabled = true; 
-      document.querySelector('#servicebtn2').disabled = true; 
+       document.getElementById('expandedplan').disabled = true; 
+     document.getElementById('preferredplan').disabled = true; 
+     document.getElementById('servicebtn2').disabled = true; 
       } else {
         throw new Error('Network response was not ok');
       }
@@ -230,9 +242,9 @@ document.getElementById('servicebtn').addEventListener('click', function () {
       // Handle the response
       if (response.ok) {
         button.innerHTML  = 'Add Plan';
-        document.querySelector('#expanedplan').disabled = false; 
-        document.querySelector('#preferredplan').disabled = false; 
-        document.querySelector('#servicebtn2').disabled = false; 
+        document.getElementById('expandedplan').disabled = false; 
+        document.getElementById('preferredplan').disabled = false; 
+        document.getElementById('servicebtn2').disabled = false; 
       } else {
         throw new Error('Network response was not ok');
       }
@@ -253,7 +265,11 @@ document.getElementById('servicebtn').addEventListener('click', function () {
   }
   
 });
-document.getElementById('servicebtn2').addEventListener('click', function () {
+document.getElementById('servicebtn2').addEventListener('click', function (event) {
+  if (this.disabled) {
+    event.preventDefault(); // Prevent default behavior
+    return; // Exit early
+}
 const button = document.querySelector('#servicebtn2');
 if (button.innerHTML== 'Add Plan') {
   
@@ -269,9 +285,7 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Remove Plan';
-      document.querySelector('#expanedplan').disabled = true; 
-      document.querySelector('#preferredplan').disabled = true; 
-      document.querySelector('#servicebtn').disabled = true; 
+      
     } else {
       throw new Error('Network response was not ok');
     }
@@ -279,6 +293,11 @@ if (button.innerHTML== 'Add Plan') {
   .then(data => {
     // Do something with the data
     // console.log(data);
+    document.getElementById('expandedplan').disabled = true; 
+    // const expandvalue  = document.getElementById('expandedplan').disabled;
+    // console.log(expandvalue);
+      document.getElementById('preferredplan').disabled = true; 
+      document.getElementById('servicebtn').disabled = true; 
   })
   .catch(error => {
     // Handle errors
@@ -302,9 +321,7 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Add Plan';
-      document.querySelector('#expanedplan').disabled = false; 
-      document.querySelector('#preferredplan').disabled = false; 
-      document.querySelector('#servicebtn').disabled = false; 
+      
     } else {
       throw new Error('Network response was not ok');
     }
@@ -312,6 +329,10 @@ if (button.innerHTML== 'Add Plan') {
   .then(data => {
     // Do something with the data
     // console.log(data);
+
+    document.getElementById('expandedplan').disabled = false; 
+      document.getElementById('preferredplan').disabled = false; 
+      document.getElementById('servicebtn').disabled = false; 
   })
   .catch(error => {
     // Handle errors
