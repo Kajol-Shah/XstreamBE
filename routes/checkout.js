@@ -91,7 +91,7 @@ router.route('/').get(authorizeUser,async (req, res) => {
                   formData.append('CustomerId', "879");
                   formData.append('Amount', checkout.grandTotal);
                   formData.append('Token', token);
-                  formData.append('CallbackURL', 'http://localhost:3000/checkout/payment-status');
+                  formData.append('CallbackURL', 'https://xstream-be.vercel.app/payment-status');
                   formData.append('TransactionType', 'SALE');
                   formData.append('PaymentType', 'CC');
                   formData.append('SaveForFuture', 'false');
