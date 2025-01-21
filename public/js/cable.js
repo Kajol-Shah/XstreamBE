@@ -477,3 +477,51 @@ document.querySelectorAll('.card').forEach((card) => {
     });
   });
   
+const contactus = document.getElementById("contactForm");
+
+contactus.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let firstName = document.getElementById("name").value;
+  let phone = document.getElementById("number").value;
+  let email = document.getElementById("email").value;
+  let message = document.getElementById("message").value;
+//   console.log(firstName);
+  fetch('/cable/contactus', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json' // Adjust if necessary
+    },
+    body: JSON.stringify({Name: firstName,Phone:phone,Email:email,Message:message}) // If sending data
+  })
+  .then(response => {
+    // Handle the response
+    if (response.ok) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Submitted successfully!',
+            confirmButtonText: 'OK'
+    });
+    // setTimeout(() => {
+    //     location.reload();
+    //   }, 1000);
+    
+    } else {
+      throw new Error(response);
+    }
+  })
+  .then(data => {
+    // Do something with the data
+    // console.log(data);
+  })
+  .catch(error => {
+    // Handle errors
+    // console.log('Error:', error);
+    Swal.fire({
+          icon: 'error',
+          title: 'Cannot Submit! Try Again Later',
+          confirmButtonText: 'OK'
+          
+  });
+});
+});

@@ -506,21 +506,23 @@
                       </div>
                       <div class="screen-body-item">
                         <div class="app-form">
+                            <form id="contactForm">
                           <div class="app-form-group">
-                            <input class="app-form-control" placeholder="NAME" value="John Smith">
+                            <input type="text" class="app-form-control" id="name" required placeholder="NAME" value="John Smith">
                           </div>
                           <div class="app-form-group">
-                            <input class="app-form-control" placeholder="EMAIL">
+                            <input type="email" class="app-form-control" id="email" required placeholder="EMAIL">
                           </div>
                           <div class="app-form-group">
-                            <input class="app-form-control" placeholder="CONTACT NO">
+                            <input type="number" class="app-form-control" id="number" required placeholder="CONTACT NO">
                           </div>
                           <div class="app-form-group message">
-                            <input class="app-form-control" placeholder="MESSAGE">
+                            <textarea class="app-form-control" id="message" required placeholder="MESSAGE"> </textarea>
                           </div>
                           <div class="app-form-group buttons">
-                            <button class="app-form-button">Contact for Information</button>
+                            <button type="submit" class="app-form-button">Contact for Information</button>
                           </div>
+                          </form>
                         </div>
                       </div>
                     </div>
