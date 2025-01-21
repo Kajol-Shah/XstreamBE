@@ -16,9 +16,9 @@
                   <div class="step-name" onclick="location.href='/checkout';">Checkout</div>
                 </div>
             </div>
-            {{!-- {{#if hasErrors}}
-            <div>{{error}}</div>
-            {{/if}} --}}
+            {{#if hasErrors}}
+                              <p class="error-note"><span>Error: </span>{{error}}</p>
+            {{/if}}
            {{#if data}}
             <div class="pricing-container">
                 {{#if data.basic}}
@@ -94,8 +94,8 @@
                                 <button class="carousel-btn right-btn3"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
                             </div>
                         </div>
-                        <figure class="pricing-row">Additional 56 channels</figure>
-                        <figure class="pricing-row">Includes all major TV Networks</figure>
+                        <figure class="pricing-row">Total 80 channels</figure>
+                        <figure class="pricing-row">Includes OP Basic and all major TV Networks</figure>
                         <figure class="pricing-row">Includes 72 hour Replay TV feature</figure>
                         {{!-- <figure class="pricing-row strike">DVR Not Included</figure> --}}
                         <div class="pricing-footer">
@@ -140,7 +140,7 @@
                             </div>
                         </div>
 
-                         <figure class="pricing-row style2">Additional 68 channels</figure>
+                         <figure class="pricing-row style2">Over 60 of the best National Cable channels.</figure>
                         <figure class="pricing-row style2">Includes PVR video recording</figure>
                         {{!-- <figure class="pricing-row style2">25 hours of Cloud DVR</figure> --}}
                         <figure class="pricing-row style2">Includes 72 hour Replay TV</figure>
@@ -157,7 +157,7 @@
                     </div>
                 </div>
 {{/if}}
-{{#if data.expanded}}
+{{!-- {{#if data.expanded}}
                 <div class="pricing-column-wrapper style2">
                     <div class="pricing-column style2" >
                         <div class="pricing-price-row style2">
@@ -200,7 +200,7 @@
                         </div>
                     </div>
                 </div>
-               {{/if}}
+               {{/if}} --}}
           
         </div>
         {{/if}}
@@ -210,13 +210,71 @@
         
       <div class="main-feature" >
           <div class="heading-container">
-              <h1>Popular Premium Packages Offer Something for<span style="color: #069bd9;"> Everyone </span></h1>
+              <h1>Popular Add-On Packages Offer Something for<span style="color: #069bd9;"> Everyone </span></h1>
               <p>Access to these upgrades requires a Preferred subscription.  
                   These members can select one or more options based on their interests.</p>
           </div>
           {{#if data}}
           <div class="gradient-cards2">
-
+            {{#if data.expanded}}
+            <article class="plan [ card-plan ] Extended">
+                <div class="inner">
+        
+                    <span class="pricing Extended">
+                        <span>
+                            +${{data.expanded.Price}} <small>/ m</small>
+                        </span>
+                    </span>
+                    <h2 class="title">{{data.expanded.Name}}</h2>
+                    <p class="info">Plan available to Preferred Plan Subscribers.</p>
+                    
+                    <ul class="features">
+                        <li>
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <span>Over 40 more National Cable channels</span>
+                        </li>
+                        <li>
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <span>The ultimate entertainment TV package</span>
+                        </li>
+                       
+                        <li>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                        <path fill="none" d="M0 0h24v24H0z" />
+                                        <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <span>Up to 185 + channels and growing</span>
+                        </li>
+                        <li>
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <span>Requires Preferred package</span>
+                        </li>
+                    </ul>
+                    {{#if data.expanded.purchased}}
+                  <button class="button Sports" id="expandedplan" value={{data.expanded.id}}>Remove Expanded</button>
+                  {{else}}
+                  <button class="button Sports" id="expandedplan" value={{data.expanded.id}}>Add Expanded</button>
+                  {{/if}}
+                </div>
+            </article>  
+            {{/if}}
         {{#if data.sports}}
 
           <article class="plan [ card-plan ] Sports">
@@ -228,7 +286,7 @@
                       </span>
                   </span>
                   <h2 class="title">{{data.sports.Name}}</h2>
-                  <p class="info">This is the upgrade plan for those who have a Preferred plan already selected.</p>
+                  <p class="info">Plan available to Preferred Plan Subscribers.</p>
                   <ul class="features">
                       <li>
                           <span class="icon">
@@ -285,8 +343,8 @@
                           +${{data.hbo.Price}} <small>/ m</small>
                       </span>
                   </span>
-                  <h2 class="title">{{data.hbo.Name}}</h2>
-                  <p class="info">This is the upgrade plan for those who have a Preferred plan already selected.</p>
+                  <h2 class="title">{{data.hbo.Name}} Premium</h2>
+                  <p class="info">Plan available to Preferred Plan Subscribers.</p>
                   <ul class="features">
                       <li>
                           <span class="icon">
@@ -353,7 +411,7 @@
                       </span>
                   </span>
                   <h2 class="title">{{data.spanish.Name}}</h2>
-                  <p class="info">This is the upgrade plan for those who have a Preferred plan already selected.</p>
+                  <p class="info">Plan available to Preferred Plan Subscribers.</p>
                   <ul class="features">
                       <li class="sub-li">
                           <span class="icon">

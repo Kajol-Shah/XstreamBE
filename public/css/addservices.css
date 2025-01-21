@@ -1614,3 +1614,8 @@ to {
 animation: slide-in 0.5s ease-out;
 }
 
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none; /* Prevent interaction */
+}

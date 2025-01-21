@@ -407,10 +407,10 @@ document.addEventListener("DOMContentLoaded", function () {
         choice.textContent ="✔";
         row.appendChild(choice);
         const preferred = document.createElement("td");
-        preferred.textContent ="✔";
+        preferred.textContent ="-";
         row.appendChild(preferred);
         const expanded = document.createElement("td");
-        expanded.textContent ="✔";
+        expanded.textContent ="-";
         row.appendChild(expanded);
         // const both = document.createElement("td");
         // both.textContent ="✔";
@@ -447,10 +447,10 @@ document.addEventListener("DOMContentLoaded", function () {
         choice.textContent ="✔";
         row.appendChild(choice);
         const preferred = document.createElement("td");
-        preferred.textContent ="✔";
+        preferred.textContent ="-";
         row.appendChild(preferred);
         const expanded = document.createElement("td");
-        expanded.textContent ="✔";
+        expanded.textContent ="-";
         row.appendChild(expanded);
         // const both = document.createElement("td");
         // both.textContent ="✔";
@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
         preferred.textContent ="✔";
         row.appendChild(preferred);
         const expanded = document.createElement("td");
-        expanded.textContent ="✔";
+        expanded.textContent ="-";
         row.appendChild(expanded);
         // const both = document.createElement("td");
         // both.textContent ="✔";

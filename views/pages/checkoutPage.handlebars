@@ -22,6 +22,7 @@
                 <div class="receipt-section">
                   <h2>Order Summary</h2>
                   <p>Please review your order details carefully. If something seems incorrect, <a href="/service">click here</a> to go back and make changes.</p>
+                  
                   {{#if orderDetails.found}}
                   <table class="receipt-table">
                     <thead>
@@ -56,12 +57,16 @@
                     </tfoot>
                   </table>
                   {{else}}
-                    <p>Cart is empty!!</p>
+                    {{#if hasErrors}}
+                              <p class="error-note"><span>Error: </span>{{error}}</p>
+                    {{/if}}
                   {{/if}}
                 </div>
             
                 <!-- Payment Section -->
+                
                 <div class="payment-section">
+                  {{#if orderDetails.found}}
                   <h2>Payment Information</h2>
                    {{!-- <iframe id="paymentIframe" src="https://hpp-test.ippay.com" width="100%" height="600px" frameborder="0"></iframe> --}}
                   <form method="POST" action="/checkout/payment-process" >
@@ -78,6 +83,7 @@
                     <button type="submit" class="btn">Pay Now</button>
                   </form>
                 </div>
+                {{/if}}
               </div>
             
     

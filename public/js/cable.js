@@ -282,86 +282,86 @@ document.querySelector(".right-btn3").addEventListener("click", () => {
 });
 
 // Data array with image paths and alt texts
-const expanded = [
-    { src: "../../public/logos/dlife.svg", alt: "DLIFE" },
-    { src: "../../public/logos/crime.svg", alt: "CRIME" },
-    { src: "../../public/logos/mhc.svg", alt: "MHC" },
-    { src: "../../public/logos/ahc.svg", alt: "AHC" },
-    { src: "../../public/logos/damerica.svg", alt: "DAMERICA" },
-    { src: "../../public/logos/mydest.svg", alt: "MYDEST" },
-    { src: "../../public/logos/awe.svg", alt: "AWE" },
-    { src: "../../public/logos/ngw.svg", alt: "NGW" },
-    { src: "../../public/logos/science.svg", alt: "SCIENCE" },
-    { src: "../../public/logos/pets.svg", alt: "PETS" },
-    { src: "../../public/logos/disnjr.svg", alt: "DISNJR" },
-    { src: "../../public/logos/disnxd.svg", alt: "DISNXD" },
-    { src: "../../public/logos/estv.svg", alt: "ESTV" },
-    { src: "../../public/logos/lrw.svg", alt: "LRW" },
-    { src: "../../public/logos/gfam.svg", alt: "GFAM" },
-    { src: "../../public/logos/gliv.svg", alt: "GLIV" },
-    { src: "../../public/logos/uptv.svg", alt: "UPTV" },
-    { src: "../../public/logos/fuse.svg", alt: "FUSE" },
-    { src: "../../public/logos/bloom.svg", alt: "BLOOM" },
-    { src: "../../public/logos/dw.svg", alt: "DW" },
-    { src: "../../public/logos/cnbcw.svg", alt: "CNBCW" },
-    { src: "../../public/logos/newsmax.svg", alt: "NEWSMAX" },
-    { src: "../../public/logos/oan.svg", alt: "OAN" },
-    { src: "../../public/logos/tac.svg", alt: "TAC" },
-    { src: "../../public/logos/ant1.svg", alt: "ANT1" },
-    { src: "../../public/logos/espnews.svg", alt: "ESPNEWS" },
-    { src: "../../public/logos/espnu.svg", alt: "ESPNU" },
-    { src: "../../public/logos/fs2.svg", alt: "FS2" },
-    { src: "../../public/logos/b1g.svg", alt: "B1G" },
-    { src: "../../public/logos/sec.svg", alt: "SEC" },
-    { src: "../../public/logos/accn.svg", alt: "ACCN" },
-    { src: "../../public/logos/cars.svg", alt: "CARS" },
-    { src: "../../public/logos/rfdtv.svg", alt: "RFDTV" },
-    { src: "../../public/logos/magnoli.svg", alt: "MAGNOLI" },
-    { src: "../../public/logos/cook.svg", alt: "COOK" },
-    { src: "../../public/logos/recipe.svg", alt: "RECIPE" },
-    { src: "../../public/logos/reelz.svg", alt: "REELZ" },
-    { src: "../../public/logos/comedy.svg", alt: "COMEDY" },
-    { src: "../../public/logos/sony.svg", alt: "SONY" },
-    { src: "../../public/logos/fxm.svg", alt: "FXM" }
-];
+// const expanded = [
+//     { src: "../../public/logos/dlife.svg", alt: "DLIFE" },
+//     { src: "../../public/logos/crime.svg", alt: "CRIME" },
+//     { src: "../../public/logos/mhc.svg", alt: "MHC" },
+//     { src: "../../public/logos/ahc.svg", alt: "AHC" },
+//     { src: "../../public/logos/damerica.svg", alt: "DAMERICA" },
+//     { src: "../../public/logos/mydest.svg", alt: "MYDEST" },
+//     { src: "../../public/logos/awe.svg", alt: "AWE" },
+//     { src: "../../public/logos/ngw.svg", alt: "NGW" },
+//     { src: "../../public/logos/science.svg", alt: "SCIENCE" },
+//     { src: "../../public/logos/pets.svg", alt: "PETS" },
+//     { src: "../../public/logos/disnjr.svg", alt: "DISNJR" },
+//     { src: "../../public/logos/disnxd.svg", alt: "DISNXD" },
+//     { src: "../../public/logos/estv.svg", alt: "ESTV" },
+//     { src: "../../public/logos/lrw.svg", alt: "LRW" },
+//     { src: "../../public/logos/gfam.svg", alt: "GFAM" },
+//     { src: "../../public/logos/gliv.svg", alt: "GLIV" },
+//     { src: "../../public/logos/uptv.svg", alt: "UPTV" },
+//     { src: "../../public/logos/fuse.svg", alt: "FUSE" },
+//     { src: "../../public/logos/bloom.svg", alt: "BLOOM" },
+//     { src: "../../public/logos/dw.svg", alt: "DW" },
+//     { src: "../../public/logos/cnbcw.svg", alt: "CNBCW" },
+//     { src: "../../public/logos/newsmax.svg", alt: "NEWSMAX" },
+//     { src: "../../public/logos/oan.svg", alt: "OAN" },
+//     { src: "../../public/logos/tac.svg", alt: "TAC" },
+//     { src: "../../public/logos/ant1.svg", alt: "ANT1" },
+//     { src: "../../public/logos/espnews.svg", alt: "ESPNEWS" },
+//     { src: "../../public/logos/espnu.svg", alt: "ESPNU" },
+//     { src: "../../public/logos/fs2.svg", alt: "FS2" },
+//     { src: "../../public/logos/b1g.svg", alt: "B1G" },
+//     { src: "../../public/logos/sec.svg", alt: "SEC" },
+//     { src: "../../public/logos/accn.svg", alt: "ACCN" },
+//     { src: "../../public/logos/cars.svg", alt: "CARS" },
+//     { src: "../../public/logos/rfdtv.svg", alt: "RFDTV" },
+//     { src: "../../public/logos/magnoli.svg", alt: "MAGNOLI" },
+//     { src: "../../public/logos/cook.svg", alt: "COOK" },
+//     { src: "../../public/logos/recipe.svg", alt: "RECIPE" },
+//     { src: "../../public/logos/reelz.svg", alt: "REELZ" },
+//     { src: "../../public/logos/comedy.svg", alt: "COMEDY" },
+//     { src: "../../public/logos/sony.svg", alt: "SONY" },
+//     { src: "../../public/logos/fxm.svg", alt: "FXM" }
+// ];
 
   
 
 
-// Select the carousel and dots container
-const logoTrack4 = document.querySelector('.logo-track-expanded');
-const dotsContainer4 = document.querySelector('.dots-container-expanded');
+// // Select the carousel and dots container
+// const logoTrack4 = document.querySelector('.logo-track-expanded');
+// const dotsContainer4 = document.querySelector('.dots-container-expanded');
 
-// Add images and dots dynamically
-expanded.forEach((image, index) => {
+// // Add images and dots dynamically
+// expanded.forEach((image, index) => {
     
-    // Create the slide div
-    const slide = document.createElement('div');
-    slide.classList.add('logo-slide4');
+//     // Create the slide div
+//     const slide = document.createElement('div');
+//     slide.classList.add('logo-slide4');
 
-    // Create the image element
-    const img = document.createElement('img');
-    img.src = image.src;
-    img.alt = image.alt;
+//     // Create the image element
+//     const img = document.createElement('img');
+//     img.src = image.src;
+//     img.alt = image.alt;
 
-    // Append image to slide
-    slide.appendChild(img);
+//     // Append image to slide
+//     slide.appendChild(img);
 
-    // Append slide to track
-    logoTrack4.appendChild(slide);
+//     // Append slide to track
+//     logoTrack4.appendChild(slide);
 
     
-});
+// });
 
 
 
-document.querySelector(".left-btn4").addEventListener("click", () => {
-    document.querySelector(".logo-track-expanded").scrollBy({ left: -100, behavior: "smooth" });
-});
+// document.querySelector(".left-btn4").addEventListener("click", () => {
+//     document.querySelector(".logo-track-expanded").scrollBy({ left: -100, behavior: "smooth" });
+// });
 
-document.querySelector(".right-btn4").addEventListener("click", () => {
-    document.querySelector(".logo-track-expanded").scrollBy({ left: 100, behavior: "smooth" });
-});
+// document.querySelector(".right-btn4").addEventListener("click", () => {
+//     document.querySelector(".logo-track-expanded").scrollBy({ left: 100, behavior: "smooth" });
+// });
 
 document.addEventListener("DOMContentLoaded", function () {
     // Data for the slides

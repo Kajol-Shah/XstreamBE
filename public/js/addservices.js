@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const sports = document.getElementById('sportsbtn');
   const hbo = document.getElementById('hbobtn')
   const button1 = document.getElementById('preferredplan');
-  const button2 = document.getElementById('expandedplan');
+  const expanded = document.getElementById('expandedplan');
   const featuresElement = document.querySelector('#subplans');
-  if(sports.innerHTML==="Remove Sports" || hbo.innerHTML==="Remove HBO"){
+  if(sports.innerHTML==="Remove Sports" || hbo.innerHTML==="Remove HBO" || expanded.innerHTML==="Remove Expanded"){
     featuresElement.style.display = 'block';
   }
-  if(button1.innerHTML==="Remove Plan" || button2.innerHTML==="Remove Plan"){
+  if(button1.innerHTML==="Remove Plan"){
     featuresElement.style.display = 'block';
   }
   const radioButtons = document.querySelector(
@@ -23,22 +23,29 @@ document.addEventListener("DOMContentLoaded", function () {
       // Programmatically trigger a click
       button.click();
     }
+    const btn1 = document.getElementById('servicebtn');
+    const btn2 = document.getElementById('servicebtn2');
+    const btn3 = document.getElementById('preferredplan');
 
+    // Check if any button has innerHTML as "Remove Plan"
+    [btn1, btn2, btn3].forEach(x => {
+        if (x.innerHTML.trim() === "Remove Plan") {
+            // Add 'disabled' class to other buttons
+            [btn1, btn2, btn3].forEach(btn => {
+                if (btn !== x) {
+                    btn.classList.add('disabled');
+                }
+            });
+        }
+    });
 });
 
 document.getElementById('expandedplan').addEventListener('click', function (event) {
-  if (this.disabled) {
-    event.preventDefault(); // Prevent default behavior
-    return; // Exit early
-}
-  const featuresElement = document.querySelector('#subplans');
+  
   const button = document.querySelector('#expandedplan');
-  const active = document.querySelector('#preferredplan');
 
-  if (button.innerHTML== 'Add Plan') {
-    if(active.innerHTML =='Add Plan'){
-      featuresElement.style.display = 'block';
-    }
+  if (button.innerHTML== 'Add Expanded') {
+    
     fetch('/cart/add', {
               method: 'POST', // Or GET, PUT, DELETE, etc.
               headers: {
@@ -49,10 +56,8 @@ document.getElementById('expandedplan').addEventListener('click', function (even
             .then(response => {
               // Handle the response
               if (response.ok) {
-                button.innerHTML  = 'Remove Plan';
-                document.getElementById('preferredplan').disabled = true; 
-                document.getElementById('servicebtn').disabled = true; 
-                document.getElementById('servicebtn2').disabled = true; 
+                button.innerHTML  = 'Remove Expanded';
+                
               } else {
                 throw new Error('Network response was not ok');
               }
@@ -72,12 +77,7 @@ document.getElementById('expandedplan').addEventListener('click', function (even
     });
    
   } else {
-    if(active.innerHTML =='Remove Plan'){
-      featuresElement.style.display = 'block';
-    }
-    else{
-      featuresElement.style.display = 'none';
-    }
+    
     fetch('/cart/remove', {
       method: 'POST', // Or GET, PUT, DELETE, etc.
       headers: {
@@ -88,10 +88,8 @@ document.getElementById('expandedplan').addEventListener('click', function (even
     .then(response => {
       // Handle the response
       if (response.ok) {
-        button.innerHTML  = 'Add Plan';
-        document.getElementById('preferredplan').disabled = false; 
-        document.getElementById('servicebtn').disabled = false; 
-        document.getElementById('servicebtn2').disabled = false; 
+        button.innerHTML  = 'Add Expanded';
+       
       } else {
         throw new Error('Network response was not ok');
       }
@@ -120,11 +118,10 @@ document.getElementById('preferredplan').addEventListener('click', function (eve
 }
 const featuresElement = document.querySelector('#subplans');
 const button = document.querySelector('#preferredplan');
-const active = document.querySelector('#expandedplan');
 if (button.innerHTML== 'Add Plan') {
-  if(active.innerHTML =='Add Plan'){
+ 
     featuresElement.style.display = 'block';
-  }
+  
   
   fetch('/cart/add', {
     method: 'POST', // Or GET, PUT, DELETE, etc.
@@ -137,9 +134,10 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Remove Plan';
-      document.getElementById('expandedplan').disabled = true; 
       document.getElementById('servicebtn').disabled = true; 
+      document.getElementById('servicebtn').classList.add('disabled');
       document.getElementById('servicebtn2').disabled = true; 
+      document.getElementById('servicebtn2').classList.add('disabled');
     } else {
       throw new Error('Network response was not ok');
     }
@@ -158,12 +156,10 @@ if (button.innerHTML== 'Add Plan') {
   });
 });
 } else {
-  if(active.innerHTML =='Remove Plan'){
-    featuresElement.style.display = 'block';
-  }
-  else{
+  
+ 
     featuresElement.style.display = 'none';
-  }
+  
  
   fetch('/cart/remove', {
     method: 'POST', // Or GET, PUT, DELETE, etc.
@@ -176,9 +172,10 @@ if (button.innerHTML== 'Add Plan') {
     // Handle the response
     if (response.ok) {
       button.innerHTML  = 'Add Plan';
-      document.getElementById('expandedplan').disabled = true; 
-      document.getElementById('servicebtn').disabled = true; 
-      document.getElementById('servicebtn2').disabled = true; 
+      document.getElementById('servicebtn').disabled = false; 
+      document.getElementById('servicebtn').classList.remove('disabled');
+      document.getElementById('servicebtn2').disabled = false; 
+      document.getElementById('servicebtn2').classList.remove('disabled');
     } else {
       throw new Error('Network response was not ok');
     }
@@ -219,9 +216,10 @@ document.getElementById('servicebtn').addEventListener('click', function (event)
       // Handle the response
       if (response.ok) {
         button.innerHTML  = 'Remove Plan';
-       document.getElementById('expandedplan').disabled = true; 
      document.getElementById('preferredplan').disabled = true; 
+     document.getElementById('preferredplan').classList.add('disabled');
      document.getElementById('servicebtn2').disabled = true; 
+     document.getElementById('servicebtn2').classList.add('disabled');
       } else {
         throw new Error('Network response was not ok');
       }
@@ -252,9 +250,10 @@ document.getElementById('servicebtn').addEventListener('click', function (event)
       // Handle the response
       if (response.ok) {
         button.innerHTML  = 'Add Plan';
-        document.getElementById('expandedplan').disabled = false; 
         document.getElementById('preferredplan').disabled = false; 
+        document.getElementById('preferredplan').classList.remove('disabled');
         document.getElementById('servicebtn2').disabled = false; 
+        document.getElementById('servicebtn2').classList.remove('disabled');
       } else {
         throw new Error('Network response was not ok');
       }
@@ -303,11 +302,10 @@ if (button.innerHTML== 'Add Plan') {
   .then(data => {
     // Do something with the data
     // console.log(data);
-    document.getElementById('expandedplan').disabled = true; 
-    // const expandvalue  = document.getElementById('expandedplan').disabled;
-    // console.log(expandvalue);
       document.getElementById('preferredplan').disabled = true; 
+      document.getElementById('preferredplan').classList.add('disabled');
       document.getElementById('servicebtn').disabled = true; 
+      document.getElementById('servicebtn').classList.add('disabled');
   })
   .catch(error => {
     // Handle errors
@@ -340,9 +338,10 @@ if (button.innerHTML== 'Add Plan') {
     // Do something with the data
     // console.log(data);
 
-    document.getElementById('expandedplan').disabled = false; 
       document.getElementById('preferredplan').disabled = false; 
+      document.getElementById('preferredplan').classList.remove('disabled');
       document.getElementById('servicebtn').disabled = false; 
+      document.getElementById('servicebtn').classList.remove('disabled');
   })
   .catch(error => {
     // Handle errors

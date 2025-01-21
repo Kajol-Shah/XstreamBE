@@ -89,18 +89,19 @@ const validation = async ( data,AccountId) => {
       throw {statusCode: 500, message: 'Internal Server Error'};
     }
     else{
-      if(isItem.Name==="XSTREAM OP Basic" || isItem.Name==="XSTREAM Choice" || isItem.Name==="XSTREAM Preferred" || isItem.Name==="XSTREAM Expanded"){
+      if(isItem.Name==="XSTREAM OP Basic" || isItem.Name==="XSTREAM Choice"){
         validData.basic=true;
       }
       else if(isItem.Name==="25MB"|| isItem.Name==="50MB" || isItem.Name==="100MB"){
         validData.basicInternet=true;
       }
-      else if(isItem.Name==="XSTREAM Sports"|| isItem.Name==="XSTREAM HBO" || isItem.Name==="XSTREAM Spanish"){
+      else if(isItem.Name==="XSTREAM Sports"|| isItem.Name==="XSTREAM HBO" || isItem.Name==="XSTREAM Expanded" || isItem.Name==="XSTREAM Spanish"){
         Premium=true;
       }
       
-      else if(isItem.Name==="XSTREAM Preferred" || isItem.Name==="XSTREAM Expanded"){
+      else if(isItem.Name==="XSTREAM Preferred"){
         Premium_valid=true;
+        validData.basic=true;
         
       }
     }
@@ -115,25 +116,28 @@ const validation = async ( data,AccountId) => {
             if(isItem.insertedCount === 0){
               throw {statusCode: 500, message: 'Internal Server Error'};
             }
-            if(isItem.Name==="XSTREAM OP Basic" || isItem.Name==="XSTREAM Choice" || isItem.Name==="XSTREAM Preferred" || isItem.Name==="XSTREAM Expanded"){
+            if(isItem.Name==="XSTREAM OP Basic" || isItem.Name==="XSTREAM Choice"){
               validData.basic=true;
             }
             else if(isItem.Name==="25MB"|| isItem.Name==="50MB" || isItem.Name==="100MB"){
               validData.basicInternet=true;
             }
-            else if(isItem.Name==="XSTREAM Preferred" || isItem.Name==="XSTREAM Expanded" ){
+            else if(isItem.Name==="XSTREAM Preferred"){
               Premium_valid=true;
-             
+              validData.basic=true;
             }
           }
     }
 
     if(validData){
-      if(validData.basic===true && validData.basicInternet===true){
-        validate.validated = true;
+      if(Object.keys(validData).length===2){
+        if(validData.basic===true && validData.basicInternet===true){
+          
+          validate.validated = true;
+        }
       }
       else{
-        throw {statusCode: 400, message: 'Select all minimum plans'};
+        throw {statusCode: 400, message: 'Select all minimum plans(Anyone plan with minimum internet plan)'};
       }
     }
     if(Premium){
@@ -141,7 +145,7 @@ const validation = async ( data,AccountId) => {
         validate.validated = true;
       }
       else{
-        throw {statusCode: 400, message: 'Select Preferred or Expanded plans to add Premium plans'};
+        throw {statusCode: 400, message: 'Select Preferred plan to add Add-on packages'};
       }
     }
     return validate;

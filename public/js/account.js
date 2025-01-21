@@ -101,13 +101,14 @@ editProfileModal.addEventListener("submit", (e) => {
   let firstName = document.getElementById("firstName").value;
   let lastName = document.getElementById("lastName").value;
   let email = document.getElementById("email").value;
+  let address = document.getElementById("address").value;
 //   console.log(firstName);
   fetch('/profileEdit', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json' // Adjust if necessary
     },
-    body: JSON.stringify({FirstName: firstName,LastName:lastName,Email:email}) // If sending data
+    body: JSON.stringify({FirstName: firstName,LastName:lastName,Email:email,Address:address}) // If sending data
   })
   .then(response => {
     // Handle the response

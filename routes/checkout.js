@@ -37,14 +37,35 @@ router.route('/').get(authorizeUser,async (req, res) => {
         catch(e) {
           if(e.statusCode===500){
             return res
-            .status(500).send({hasErrors: true, error: e.message});
+            .status(500)
+            .render('pages/checkoutPage',{
+            partial: "checkout-script",
+            css: "checkout-css",
+            title:"Checkout",
+            user:true,
+            hasErrors: true, error: e.message, 
+          });
           }
           if(e.statusCode) {
             return res
-            .status(400).send({hasErrors: true, error: e.message});
+            .status(e.statusCode)
+            .render('pages/checkoutPage',{
+            partial: "checkout-script",
+            css: "checkout-css",
+            title:"Checkout",
+            user:true,
+            hasErrors: true, error: e.message, 
+          });
           } else {
             return res
-            .status(400).send({hasErrors: true, error: e.message});
+            .status(400)
+            .render('pages/checkoutPage',{
+            partial: "checkout-script",
+            css: "checkout-css",
+            title:"Checkout",
+            user:true,
+            hasErrors: true, error: e.message, 
+          });
           }
         }
     } else {     

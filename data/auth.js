@@ -118,7 +118,8 @@ const createUser = async ( data) => {
         LastName:data.LastName,
         Email:data.Email,
         Password: hashedPassword,
-        BillingAddress:location._id.toString()
+        BillingAddress:location._id.toString(),
+        Address:data.AptNo+" " +data.Street+ " " +data.City+ " " +stateNameToAbbreviation(data.State)
     };
     const insertUser = await userCollection.insertOne(newUser);
     // console.log(insertUser);
@@ -190,7 +191,7 @@ const checkUser = async (data) => {
       }
     let update = {updated: false};
     const usersCollection = await users();
-    let userUpdate = await usersCollection.updateOne({_id:new ObjectId(id)},{ $set: { FirstName: data.FirstName,LastName:data.LastName,Email:data.Email} });
+    let userUpdate = await usersCollection.updateOne({_id:new ObjectId(id)},{ $set: { FirstName: data.FirstName,LastName:data.LastName,Email:data.Email,Address:data.Address} });
     if(userUpdate.insertedCount === 0){
       throw {statusCode: 500, message: 'Internal Server Error'};
     }

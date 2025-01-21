@@ -46,8 +46,8 @@
                             <div class="card">
                                 <div class="container-card bg-orange-box">
                                     <i class="fa-solid fa-trophy"></i>
-                                    <p class="card-title">Ultimate TV viewing experience</p>
-                                    <p class="card-description">Lightening fast interactive TV guide, SD, HD and 4K quality programming offers the highest in TV quality and reliability so you can fully enjoy the very best in entertainment.</p>
+                                    <p class="card-title">Ultimate TV Viewing Experience</p>
+                                    <p class="card-description">In-home streaming technology delivers crystal-clear High Definition Video, Surround Sound, Close Captions and FUNTASTIC Features so you can enjoy the best entertainment a vast selection of channels can provide.</p>
                                     <button class="read-more-btn ">Read More</button>
                                 </div>
                             </div>
@@ -162,8 +162,8 @@
                                 <button class="carousel-btn right-btn3"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
                             </div>
                         </div>
-                        <figure class="pricing-row">Additional 56 channels</figure>
-                        <figure class="pricing-row">Includes all major TV Networks</figure>
+                        <figure class="pricing-row">Total 80 channels</figure>
+                        <figure class="pricing-row">Includes OP Basic and all major TV Networks</figure>
                         <figure class="pricing-row">Includes 72 hour Replay TV feature</figure>
                         {{!-- <figure class="pricing-row strike">DVR Not Included</figure> --}}
                         <div class="pricing-footer">
@@ -204,7 +204,7 @@
                             </div>
                         </div>
 
-                        <figure class="pricing-row style2">Additional 68 channels</figure>
+                        <figure class="pricing-row style2">Over 60 of the best National Cable channels.</figure>
                         <figure class="pricing-row style2">Includes PVR video recording</figure>
                         {{!-- <figure class="pricing-row style2">25 hours of Cloud DVR</figure> --}}
                         <figure class="pricing-row style2">Includes 72 hour Replay TV</figure>
@@ -218,48 +218,7 @@
                     </div>
                 </div>
                 {{/if}}
-                {{#if data.expanded}}
-                <div class="pricing-column-wrapper style2">
-                    <div class="pricing-column style2" >
-                        <div class="pricing-price-row style2">
-                        <div class="pricing-price-wrapper style2">
-                            <div class="pricing-price style2">
-                            <div class="pricing-cost">${{data.expanded.Price}}</div>
-                            <div class="time" style="display:inline-block;">Per Month</div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="pricing-row-title style2">
-                        <div class="pricing_row_title style2">{{data.expanded.Name}}</div>
-                        </div>
-                        <div class="logo-carousel4">
-                            <div class="logo-track-expanded">
-                                
-                                <!-- <div class="logo-slide">
-                                    <img src="images/channel/espn.png" alt="ESPN">
-                                </div> -->
-                            
-                            </div>
-                            <div class="dots-container-expanded style2">
-                                <button class="carousel-btn2 left-btn4"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></button>
-                                <!-- <span class="dot" data-slide="0"></span> -->
-                                <button class="carousel-btn2 right-btn4"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        <figure class="pricing-row  style2">Additional 41 channels</figure>
-                        <figure class="pricing-row style2">The ultimate entertainment TV package</figure>
-                        <figure class="pricing-row style2">Up to 185 + channels and growing</figure>
-                        <figure class="pricing-row style2">Requires Preferred package</figure>
-                        {{!-- <figure class="pricing-row strike">DVR Not Included</figure> --}}
-                        <div class="pricing-footer">
-                        <div class="gem-button-container gem-button-position-center style2">
-                            <a href="/compareplans" class="gem-button gem-orange style2">Compare Plans</a>
-                            <a href="/service" class="gem-button gem-orange style2">Get Started</a>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-               {{/if}}
+                
             
 
 
@@ -275,23 +234,23 @@
         
         <div class="main-feature" >
             <div class="heading-container">
-                <h1>Popular Premium Packages Offer Something for<span style="color: #069bd9;"> Everyone </span></h1>
+                <h1>Popular Add-On Packages Offer Something for<span style="color: #069bd9;"> Everyone </span></h1>
                 <p>Access to these upgrades requires a Preferred subscription.  
                     These members can select one or more options based on their interests.</p>
             </div>
             {{#if data}}
             <div class="gradient-cards2">
-
-            <!-- <article class="plan [ card-plan ] Extended">
+            {{#if data.expanded}}
+            <article class="plan [ card-plan ] Extended">
                 <div class="inner">
         
                     <span class="pricing Extended">
                         <span>
-                            +$20.95 <small>/ m</small>
+                            +${{data.expanded.Price}} <small>/ m</small>
                         </span>
                     </span>
-                    <h2 class="title">Extended</h2>
-                    <p class="info">This is the upgrade plan for those who have a preferred plan already running.</p>
+                    <h2 class="title">{{data.expanded.Name}}</h2>
+                    <p class="info">Plan available to Preferred Plan Subscribers.</p>
                     
                     <ul class="features">
                         <li>
@@ -301,7 +260,7 @@
                                     <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
                                 </svg>
                             </span>
-                            <span>Additional <strong>100</strong> channels</span>
+                            <span>Over 40 more National Cable channels</span>
                         </li>
                         <li>
                             <span class="icon">
@@ -310,7 +269,7 @@
                                     <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
                                 </svg>
                             </span>
-                            <span>Dedicated Support</span>
+                            <span>The ultimate entertainment TV package</span>
                         </li>
                        
                         <li>
@@ -320,7 +279,7 @@
                                         <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
                                     </svg>
                                 </span>
-                                <span><strong>1000</strong> hours of Cloud DVR</span>
+                                <span>Up to 185 + channels and growing</span>
                         </li>
                         <li>
                             <span class="icon">
@@ -329,14 +288,15 @@
                                     <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
                                 </svg>
                             </span>
-                            <span>Mobile App</span>
+                            <span>Requires Preferred package</span>
                         </li>
                     </ul>
-                    <button class="button Extended">
+                    <button class="button Extended" onclick="location.href='/service';">
                         Choose plan
                     </button>
                 </div>
-            </article> -->
+            </article>  
+            {{/if}}
 {{#if data.sports}}
             <article class="plan [ card-plan ] Sports">
                 <div class="inner">
@@ -347,7 +307,7 @@
                         </span>
                     </span>
                     <h2 class="title">{{data.sports.Name}}</h2>
-                    <p class="info">This is the upgrade plan for those who have a Preferred plan already selected.</p>
+                    <p class="info">Plan available to Preferred Plan Subscribers.</p>
                     <ul class="features">
                         <li>
                             <span class="icon">
@@ -402,8 +362,8 @@
                             +${{data.hbo.Price}} <small>/ m</small>
                         </span>
                     </span>
-                    <h2 class="title">{{data.hbo.Name}}</h2>
-                    <p class="info">This is the upgrade plan for those who have a Preferred plan already selected.</p>
+                    <h2 class="title">{{data.hbo.Name}} Premium</h2>
+                    <p class="info">Plan available to Preferred Plan Subscribers.</p>
                     <ul class="features">
                         <li>
                             <span class="icon">
@@ -459,7 +419,7 @@
                         </span>
                     </span>
                     <h2 class="title">{{data.spanish.Name}}</h2>
-                    <p class="info">This is the upgrade plan for those who have a Preferred plan already selected.</p>
+                    <p class="info">Plan available to Preferred Plan Subscribers.</p>
                     <ul class="features">
                         <li>
                             <span class="icon">

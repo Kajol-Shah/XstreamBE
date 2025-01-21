@@ -3,7 +3,7 @@
         <div class="main-feature" >
             <div class="heading-container">
                 <h1>Account <span style="color: #ffa039;">History</span></h1>
-                <p><span style="color: #ffa039;">Please note.</span> Only Preferred or Expanded subscribers have the option to upgrade their package with one or more of our extras. 
+                <p><span style="color: #ffa039;">Please note.</span> Only Preferred subscribers have the option to upgrade their package with one or more of our ADD-ON Tiers. 
                     This is not available to our OP Basic or Choice subscribers.</p>
             </div>
 
@@ -30,7 +30,8 @@
                             {{#if data.userDetails}}
                             <div><strong>Full Name:</strong> {{data.userDetails.FirstName}} {{data.userDetails.LastName}}</div>
                             <div><strong>Email:</strong> {{data.userDetails.Email}}</div>
-                            <div><strong>Address:</strong> {{data.userDetails.location}}</div>
+                            <div><strong>Service Address:</strong> {{data.userDetails.location}}</div>
+                            <div><strong>Current Address:</strong> {{data.userDetails.Address}}</div>
                             {{/if}}
                             {{!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt, justo eget ultrices accumsan, purus eros tristique elit, at consectetur ligula eros a nisl.</p> --}}
                         </div>
@@ -80,6 +81,7 @@
                         <input type="text" id="firstName" placeholder="First Name" required value={{data.userDetails.FirstName}}>
                         <input type="text" id="lastName" placeholder="Last Name" required value={{data.userDetails.LastName}}>
                         <input type="email" id="email" placeholder="Email" required value={{data.userDetails.Email}}>
+                        <input type="textarea" id="address" placeholder="Current Address" required value="{{data.userDetails.Address}}">
                         <button type="submit">Save Changes</button>
                         {{/if}}
                     </form>
