@@ -39,7 +39,7 @@ const authorizeUser = async (req,res,next) => {
     }
     catch(err){
         if(err){
-            res.status(400).send( {hasErrors: true, error: 'UnAuthorizied Access', title: "Authorization"});
+            res.status(401).send( {hasErrors: true, error: 'UnAuthorizied Access', title: "Authorization"});
           
         }
     }
