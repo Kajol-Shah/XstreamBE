@@ -502,12 +502,15 @@ contactus.addEventListener("submit", (e) => {
             title: 'Submitted successfully!',
             confirmButtonText: 'OK'
     });
-    // setTimeout(() => {
-    //     location.reload();
-    //   }, 1000);
+    setTimeout(() => {
+        location.reload();
+      }, 1000);
     
-    } else {
-      throw new Error(response);
+    } 
+    else {
+     
+      // console.log('Error:', response);
+       throw new Error(response);
     }
   })
   .then(data => {

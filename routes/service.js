@@ -5,8 +5,6 @@ const { getTv,getInternet,getPhone} = require('../data/item');
 const { getCart } = require('../data/cart');
 const sanitizeHtml = require('sanitize-html');
 
-const sanitizeHtml = require('sanitize-html');
-
 // Middleware to sanitize all input fields
 const sanitizeInputs = (req, res, next) => {
     const sanitizeObject = (obj) => {

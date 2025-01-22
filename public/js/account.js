@@ -1,3 +1,4 @@
+
  // Open/Close Modals
  function openEditProfileModal() {
     document.getElementById('editProfileModal').style.display = 'flex';

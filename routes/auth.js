@@ -6,8 +6,6 @@ const { createUser,checkUser,updateUser } = require('../data/auth');
 const { authorizeUser } = require('../data/authorized');
 const sanitizeHtml = require('sanitize-html');
 
-const sanitizeHtml = require('sanitize-html');
-
 // Middleware to sanitize all input fields
 const sanitizeInputs = (req, res, next) => {
     const sanitizeObject = (obj) => {

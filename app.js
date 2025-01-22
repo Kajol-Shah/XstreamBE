@@ -15,6 +15,25 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', static);
+// Set MIME type for CSS
+app.use('/node_modules/sweetalert2/dist/sweetalert2.css', express.static(path.join(__dirname, 'node_modules/sweetalert2/dist/sweetalert2.css'), {
+  setHeaders: (res, path) => {
+    res.setHeader('Content-Type', 'text/css');
+  }
+}));
+// Set MIME type for JavaScript
+app.use('/node_modules/sweetalert2/dist/sweetalert2.all.min.js', express.static(path.join(__dirname, 'node_modules/sweetalert2/dist/sweetalert2.all.min.js'), {
+  setHeaders: (res, path) => {
+    res.setHeader('Content-Type', 'application/javascript');
+  }
+}));
+app.use((req, res, next) => {
+  // Add 'unsafe-inline' to allow inline scripts and attributes
+  res.setHeader('Content-Security-Policy', 
+    "script-src 'self' 'unsafe-inline' ../../node_modules/sweetalert2/dist/sweetalert2.all.min.js; " +
+    "script-src-attr 'self' 'unsafe-inline';");
+  next();
+});
 
 // Middleware and engine order setup => why is this important?
 /* Since helmet does not allow the use of the X-Powered-By header, it is important to set the engine and middleware order correctly. If the engine is set after helmet, the X-Powered-By header will be set by default. If the engine is set before helmet, the X-Powered-By header will not be set. 
@@ -39,7 +58,6 @@ app.set('views', path.join(__dirname, 'views'));
 // Configure routes
 
 constructorMethod(app);
-
 app.use(function(err, req, res, next) {
   res.status(err.status || 500); // lets put in a 401 and 403 please
   res.render('error', {

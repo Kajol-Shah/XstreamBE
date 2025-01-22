@@ -3,7 +3,6 @@ const router = express.Router();
 const { authorizeUser } = require('../data/authorized');
 const { getAccount } = require('../data/account');
 const helper = require('../helper');
-const sanitizeHtml = require('sanitize-html');
 
 //adding santizatation for inputs
 const sanitizeHtml = require('sanitize-html');

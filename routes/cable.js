@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const { authorizeUser } = require('../data/authorized');
 const { getTv } = require('../data/item');
+const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const sanitizeHtml = require('sanitize-html');
-
+dotenv.config({
+    path:'./.env'
+})
 // Middleware to sanitize all input fields
 const sanitizeInputs = (req, res, next) => {
     const sanitizeObject = (obj) => {
@@ -134,26 +137,26 @@ router.route('/').get(authorizeUser,async (req, res) => {
 
 
 
-    router.route('/contactus').post(authorizeUser,async (req, res) => {
-      // console.log(req.user);
-        if(req.user) {
+    router.route('/contactus').post(async (req, res) => {
+      
+        
           const { Name,Phone,Email,Message } = req.body;
           try {
             // Create a transporter
             const transporter = nodemailer.createTransport({
                 service: 'gmail', // or 'hotmail', 'yahoo', etc.
                 auth: {
-                    user: 'homelandop.temp@gmail.com', // Replace with your email
-                    pass: 'homeland25', // Replace with your email password or app password
+                    user: process.env.Email, // Replace with your email
+                    pass: process.env.app_password, // Replace with your email password or app password
                 },
             });
     
             // Mail options
             const mailOptions = {
                 from: Email, // Replace with your email
-                to: "Melissa@homelandop.com", // Recipient's email
-                subject: 'Form Submission',
-                text: "Message from "+ Name+"("+Phone+")" +Message, // Plain text body
+                to: process.env.EmailtoSend, // Recipient's email
+                subject: 'Contact Us Form Submission Xstream',
+                text: `Please contact ${Name} (${Phone}). Message: ${Message}`, // Plain text body
             };
     
             // Send the email
@@ -161,20 +164,8 @@ router.route('/').get(authorizeUser,async (req, res) => {
     
             res.send('Email sent successfully!');
         } catch (error) {
-            console.error('Error sending email:', error);
+            console.log('Error sending email:', error);
             res.status(500).send('Error sending email. Please try again.');
-        }
-          
-        } else {
-          return res
-          .status(400)
-          .render('pages/cablePage',{
-          partial: "cable-script",
-          css: "cable-css",
-          title:"Cable",
-     
-          hasErrors: true, error: e.message,
-        });
         }
       })
 module.exports = router;

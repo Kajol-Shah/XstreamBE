@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const sanitizeHtml = require('sanitize-html');
 const { authorizeUser } = require('../data/authorized');
 const { getTv,getInternet,getPhone} = require('../data/item');
 const { getCart } = require('../data/cart');
