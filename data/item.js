@@ -72,6 +72,7 @@ const getTv = async () => {
 const getInternet = async () => { 
   
   let getitems = {fetched: false}
+  const internetData = []
   const itemCollection = await item();
   const isItem = await itemCollection.find({Type:{ $regex: new RegExp('Internet', 'i')},CostCenter:{$regex: new RegExp('INTERNET', 'i')},Deprecated:"false"}).toArray();
   if(isItem.length===0){
@@ -79,9 +80,20 @@ const getInternet = async () => {
   }
   isItem.forEach(element => {
     element._id = element._id.toString();
-
+    if(element.Name==="25M-10M"){
+      element.Name= "25MB";
+        internetData.push(element);
+    }
+    else if(element.Name==="50M-10M"){
+      element.Name= "50MB";
+      internetData.push(element);
+    }
+    else if(element.Name==="100M-25M"){
+      element.Name= "100MB";
+      internetData.push(element);
+    }
   })
-  getitems.data=isItem;
+  getitems.data=internetData;
 //   console.log(getitems);
   getitems.fetched = true;
   return getitems;
@@ -92,14 +104,26 @@ const getInternet = async () => {
 const getPhone = async () => { 
   
   let getitems = {fetched: false}
+  const phoneData = []
   const itemCollection = await item();
-  const isItem = await itemCollection.find({Type:{ $regex: new RegExp('Voip', 'i')},CostCenter:{$regex: new RegExp('VOIP', 'i')},Deprecated:"false"}).toArray();
+  const isItem = await itemCollection.find({Type:{ $regex: new RegExp('VoIP', 'i')},CostCenter:{$regex: new RegExp('VOIP', 'i')},Deprecated:"false"}).toArray();
   if(isItem.length===0){
     throw {statusCode: 400, message: 'There are no items!'};
   }
-  
-  getitems.data=isItem;
-//   console.log(getitems);
+  isItem.forEach(element => {
+    // console.log(element.Name.includes("Sports"));
+    
+    if(element.Name==="Residential Phone Service"){
+      element.Name= "Residential Phone";
+        phoneData.push(element);
+    }
+    else if(element.Name==="Intranet Connect"){
+      phoneData.push(element);
+    }
+    
+  });
+  getitems.data=phoneData;
+  // console.log(getitems);
   getitems.fetched = true;
   return getitems;
 

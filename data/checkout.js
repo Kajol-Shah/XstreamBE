@@ -92,7 +92,7 @@ const validation = async ( data,AccountId) => {
       if(isItem.Name==="XSTREAM OP Basic" || isItem.Name==="XSTREAM Choice"){
         validData.basic=true;
       }
-      else if(isItem.Name==="25MB"|| isItem.Name==="50MB" || isItem.Name==="100MB"){
+      else if(isItem.Name==="25M-10M"|| isItem.Name==="50M-10M" || isItem.Name==="100M-25M"){
         validData.basicInternet=true;
       }
       else if(isItem.Name==="XSTREAM Sports"|| isItem.Name==="XSTREAM HBO" || isItem.Name==="XSTREAM Expanded" || isItem.Name==="XSTREAM Spanish"){
@@ -119,7 +119,7 @@ const validation = async ( data,AccountId) => {
             if(isItem.Name==="XSTREAM OP Basic" || isItem.Name==="XSTREAM Choice"){
               validData.basic=true;
             }
-            else if(isItem.Name==="25MB"|| isItem.Name==="50MB" || isItem.Name==="100MB"){
+            else if(isItem.Name==="25M-10M"|| isItem.Name==="50M-10M" || isItem.Name==="100M-25M"){
               validData.basicInternet=true;
             }
             else if(isItem.Name==="XSTREAM Preferred"){
