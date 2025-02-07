@@ -14,7 +14,7 @@ function closeServiceModal() {
 }
 
 // End Service Confirmation
-function endService(service) {
+function endService(service,data_id,endDate) {
     Swal.fire({
         title: 'End Service?',
         text: `Are you sure you want to end the ${service}?`,
@@ -24,7 +24,44 @@ function endService(service) {
         cancelButtonText: 'No, keep it active!'
     }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire('Service Ended!', '', 'success');
+            // Swal.fire('Service Ended!', '', 'success');
+            fetch('/account/end-service', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json' // Adjust if necessary
+                },
+                body: JSON.stringify({data_id: data_id,ServiceName:service,endDate:endDate}) // If sending data
+              })
+              .then(response => {
+                // Handle the response
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Service Ended!',
+                        confirmButtonText: 'OK'
+                });
+                setTimeout(() => {
+                    location.reload();
+                  }, 1000);
+                
+                } else {
+                  throw new Error(response);
+                }
+              })
+              .then(data => {
+                // Do something with the data
+                // console.log(data);
+              })
+              .catch(error => {
+                // Handle errors
+                // console.log('Error:', error);
+                Swal.fire({
+                      icon: 'error',
+                      title: 'Cannot end the service!',
+                      confirmButtonText: 'OK'
+                      
+              });
+            });
         }
     });
 }

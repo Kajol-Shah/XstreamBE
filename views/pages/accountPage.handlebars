@@ -48,7 +48,7 @@
                                     <p>Start: {{startDate}}</p>
                                     <p>Deadline: {{endDate}}</p>
                                     {{!-- <button onclick="openServiceModal()">Modify Service</button> --}}
-                                    <button onclick="endService('{{Name}}')" value={{_id}}>End Service</button>
+                                    <button onclick="endService('{{Name}}','{{_id}}','{{endDate}}')" value={{_id}}>End Service</button>
                                 </div>
                                 {{/each}}
                             </div>

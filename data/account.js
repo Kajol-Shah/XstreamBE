@@ -6,6 +6,7 @@ const users = mongoCollections.users;
 const item = mongoCollections.item;
 const account = mongoCollections.account;
 const locations = mongoCollections.locations;
+const cart = mongoCollections.cart;
 
 const getAccount = async (AccountId) => { 
   AccountId= AccountId.trim();
@@ -72,6 +73,40 @@ const getAccount = async (AccountId) => {
 
 };
 
+
+const endService = async (AccountId,ItemId) => { 
+  AccountId= AccountId.trim();
+  ItemId= ItemId.trim();
+    try{
+      helper.validObjectId(AccountId);
+      helper.validObjectId(ItemId);
+    } catch (e) {
+        throw e;
+    }
+  let end = {ended: false};
+  const cartCollection = await cart();
+  const accountCollection = await account();
+  let accounts = await accountCollection.updateOne({_id:new ObjectId(AccountId)},{ $pull: { PlanPurchased: { item_id: ItemId}} });
+  if(accounts.insertedCount === 0){
+    throw {statusCode: 500, message: 'Internal Server Error'};
+  }
+  else{
+    let carts = await cartCollection.updateOne({AccountId:AccountId,itemId:ItemId},{ $set: { purchased: false } });
+    if(carts.insertedCount === 0){
+      throw {statusCode: 500, message: 'Internal Server Error'};
+    }
+    else{
+      end.ended = true;
+    }
+  }
+  
+    
+  return end;
+
+
+
+};
 module.exports = {
-    getAccount
+    getAccount,
+    endService
 };
