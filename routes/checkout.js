@@ -5,6 +5,7 @@ const { authorizeUser } = require('../data/authorized');
 const { getItems,updateItems,validation } = require('../data/checkout');
 const helper = require('../helper');
 const crypto = require('crypto');
+const axios = require('axios');
 dotenv.config({
     path:'./.env'
 })
@@ -117,6 +118,7 @@ router.route('/').get(authorizeUser,async (req, res) => {
                   formData.append('PaymentType', 'CC');
                   formData.append('SaveForFuture', 'false');
                   formData.append('CustomField1', req.user.AccountId);
+                  formData.append('CustomField2', req.user.id);
                   res.setHeader('Content-Type', 'text/html');
                   res.send(`
                       <html>
@@ -159,7 +161,8 @@ router.route('/').get(authorizeUser,async (req, res) => {
               AuthCode,
               Amount,
               CardToken,
-              CustomField1
+              CustomField1,
+              CustomField2
               // Any other parameters you may need
           } = req.body;
 
@@ -188,7 +191,56 @@ router.route('/').get(authorizeUser,async (req, res) => {
               const update = await updateItems(checkout.data,CustomField1);
               if(update.updated===true){
                 // alert("Transcation Successful");
-                res.status(200).redirect('https://xstream-cable.vercel.app/account');
+                // res.status(200).redirect('https://xstream-cable.vercel.app/account');
+                //2 API calls to middleware and NMSPrime
+                try {
+                  const data = req.body;
+          
+                  // First API request (No Authentication)
+                  const response1 = await axios.post('https://mw.videoport.cl/api/index.php', data, {
+                      headers: { 'Content-Type': 'application/json' },
+                  });
+          
+                  // console.log('API 1 Response:', response1.data);
+          
+                  // Second API request with Basic Authentication
+                  const username = 'yourUsername';
+                  const password = 'yourPassword';
+                  const basicAuth = Buffer.from(`${username}:${password}`).toString('base64'); // Encode in Base64
+          
+                  const response2 = await axios.post('https://216.255.250.8:8080/admin/api/v0/Contract', data, {
+                      headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': `Basic ${basicAuth}`, // Attach Basic Auth header
+                      },
+                  });
+          
+                  // console.log('API 2 Response:', response2.data);
+          
+                    // res.json({
+                    //     message: 'Data sent successfully to both APIs',
+                    //     api1Response: response1.data,
+                    //     api2Response: response2.data,
+                    // });
+                  res.status(200).redirect('https://xstream-cable.vercel.app/account');
+                  } catch (e) {
+                      if(e.statusCode===500){
+                        return res.status(500).send({hasErrors: true, error: e.message});
+                      }
+                      if(e.statusCode===403) {
+                        return res
+                        .status(403).send({hasErrors: true, error: e.message});
+                      }
+                      if(e.statusCode===404) {
+                        return res
+                        .status(404).send({hasErrors: true, error: e.message});
+                      }
+                       else {
+                        return res
+                        .status(400).send({hasErrors: true, error: e.message});
+                      }
+                  }
+
               }
             }
             
