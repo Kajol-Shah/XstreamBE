@@ -129,7 +129,7 @@ function confirmAppointment(date, time) {
     });
 }
 
-document.getElementById('schedule-btn').addEventListener('click', openScheduler);
+// document.getElementById('schedule-btn').addEventListener('click', openScheduler);
 
 const editProfileModal = document.getElementById("editProfileModal");
 
