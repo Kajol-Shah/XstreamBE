@@ -10,8 +10,8 @@ services:
       NODE_ENV: development
     ports:
       - 3000:3000
-      - 443:443
-      - 5500:5500
       - 8080:8080
+      - 443:443
+      - 53:53
       - 9229:9229
     command: ["node", "--inspect=0.0.0.0:9229", "app.js"]
