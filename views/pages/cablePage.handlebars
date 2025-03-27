@@ -45,6 +45,7 @@
                 <div class="gradient-cards">
                             <div class="card">
                                 <div class="container-card bg-orange-box">
+                                    <div class="sub-cards-item_bg2"></div>
                                     <i class="fa-solid fa-trophy"></i>
                                     <p class="card-title">Ultimate TV Viewing Experience</p>
                                     <p class="card-description">In-home streaming technology delivers crystal-clear High Definition Video, Surround Sound, Close Captions and FUNTASTIC Features so you can enjoy the best entertainment a vast selection of channels can provide.</p>
@@ -53,6 +54,7 @@
                             </div>
                             <div class="card">
                                 <div class="container-card bg-orange-box">
+                                    <div class="sub-cards-item_bg2"></div>
                                     <i class="fas fa-tv"></i>
                                     <p class="card-title">Stay Tuned to All Your TV Favorites</p>
                                     <p class="card-description">72 hour replay, Start Over, PVR and Resume features delivers the best TV experiences and allows you to watch what you want and when you want together with the whole home, different program watching option.</p>
@@ -61,6 +63,7 @@
                             </div>
                             <div class="card">
                                 <div class="container-card bg-orange-box">
+                                    <div class="sub-cards-item_bg2"></div>
                                     <i class="fa-solid fa-piggy-bank"></i>
                                     <p class="card-title">Simple Setup with superior features and savings</p>
                                     <p class="card-description">Free Cloud based PVR recordings, Free Replay TV, Free Resume and Start Over features without the need for any set top boxes or any additional hardware, totally eliminates these additional and costly add-ons while eliminating most of your cabling throughout your home resulting in significant monthly savings and therefore lower overall costs for TV and your entertainment.
@@ -115,9 +118,9 @@
                             
                             </div>
                             <div class="dots-container-op-basic style3">
-                                <button class="carousel-btn left-btn style3"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></button>
+                                <button class="carousel-btn left-btn style3"><i class="icon-chevron-left" aria-hidden="true"></i></button>
                                 <!-- <span class="dot" data-slide="0"></span> -->
-                                <button class="carousel-btn right-btn style3"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+                                <button class="carousel-btn right-btn style3"><i class="icon-chevron-right" aria-hidden="true"></i></button>
                             </div>
                         </div>
                         <figure class="pricing-row">Up to 20 channels</figure>
@@ -158,9 +161,9 @@
                             
                             </div>
                             <div class="dots-container-choice">
-                                <button class="carousel-btn left-btn3"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></button>
+                                <button class="carousel-btn left-btn3"><i class="icon-chevron-left" aria-hidden="true"></i></button>
                                 <!-- <span class="dot" data-slide="0"></span> -->
-                                <button class="carousel-btn right-btn3"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+                                <button class="carousel-btn right-btn3"><i class="icon-chevron-right" aria-hidden="true"></i></button>
                             </div>
                         </div>
                         <figure class="pricing-row">Total 80 channels</figure>
@@ -201,8 +204,8 @@
                             
                             </div>
                             <div class="dots-container-preferred">
-                                <button class="carousel-btn2 left-btn2"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></button>
-                                <button class="carousel-btn2 right-btn2"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+                                <button class="carousel-btn2 left-btn2"><i class="icon-chevron-left" aria-hidden="true"></i></button>
+                                <button class="carousel-btn2 right-btn2"><i class="icon-chevron-right" aria-hidden="true"></i></button>
                             </div>
                         </div>
 
@@ -246,11 +249,13 @@
             {{#if data.expanded}}
             <article class="plan [ card-plan ] Extended">
                 <div class="inner">
-        
                     <span class="pricing Extended">
-                        <span>
+                         <div class="sub-cards-item_bg1">
+                            <span>
                             +${{data.expanded.Price}} <small>/ m</small>
-                        </span>
+                            </span>
+                         </div>
+                        
                     </span>
                     <h2 class="title">{{data.expanded.Name}}</h2>
                     <p class="info">Plan available to Preferred Plan Subscribers.</p>
@@ -305,9 +310,11 @@
                 <div class="inner">
         
                     <span class="pricing Sports">
+                        <div class="sub-cards-item_bg1">
                         <span>
                             +${{data.sports.Price}}  <small>/ m</small>
                         </span>
+                        </div>
                     </span>
                     <h2 class="title">{{data.sports.Name}}</h2>
                     <p class="info">Plan available to Preferred Plan Subscribers.</p>
@@ -361,9 +368,11 @@
                 <div class="inner">
         
                     <span class="pricing HBO">
+                        <div class="sub-cards-item_bg1">
                         <span>
                             +${{data.hbo.Price}} <small>/ m</small>
                         </span>
+                        </div>
                     </span>
                     <h2 class="title">{{data.hbo.Name}} Premium</h2>
                     <p class="info">Plan available to Preferred Plan Subscribers.</p>
@@ -417,9 +426,11 @@
                 <div class="inner">
         
                     <span class="pricing Cinemax">
+                        <div class="sub-cards-item_bg1">
                         <span>
                             <small></small>
                         </span>
+                        </div>
                     </span>
                     <h2 class="title">{{data.spanish.Name}}</h2>
                     <p class="info">Plan available to Preferred Plan Subscribers.</p>

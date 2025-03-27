@@ -107,7 +107,8 @@ const createUser = async ( data) => {
     const hashedPassword = await bcrypt.hash(data.Password,saltRounds);
     let location = {
       _id:new ObjectId(),
-      address:data.AptNo,
+      // address:data.AptNo,
+      address:data.Street,
       street:data.Street,
       city:data.City,
       state:stateNameToAbbreviation(data.State),
@@ -119,7 +120,8 @@ const createUser = async ( data) => {
         Email:data.Email,
         Password: hashedPassword,
         BillingAddress:location._id.toString(),
-        Address:data.AptNo+" " +data.Street+ " " +data.City+ " " +stateNameToAbbreviation(data.State)
+        // Address:data.AptNo+" " +data.Street+ " " +data.City+ " " +stateNameToAbbreviation(data.State)
+        Address:data.Street+ " " +data.City+ " " +stateNameToAbbreviation(data.State)
     };
     const insertUser = await userCollection.insertOne(newUser);
     // console.log(insertUser);
