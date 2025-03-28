@@ -1754,7 +1754,7 @@ to {
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: url('https://fonts.gstatic.com/s/i/materialicons/chevron_left/v14/24px.svg') no-repeat center center;
+  background: url('../images/chevron-left.svg') no-repeat center center;
   background-size: contain;
 }
 
@@ -1762,6 +1762,6 @@ to {
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: url('https://fonts.gstatic.com/s/i/materialicons/chevron_right/v14/24px.svg') no-repeat center center;
+  background: url('../images/chevron-right.svg') no-repeat center center;
   background-size: contain;
 }
