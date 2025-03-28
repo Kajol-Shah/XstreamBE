@@ -101,15 +101,15 @@ router.route('/').get(authorizeUser,async (req, res) => {
                           const transporter = nodemailer.createTransport({
                               service: 'gmail', // or 'hotmail', 'yahoo', etc.
                               auth: {
-                                  user: process.env.Email, // Replace with your email
-                                  pass: process.env.app_password, // Replace with your email password or app password
+                                  user: "homelandop.temp@gmail.com", // Replace with your email
+                                  pass: "qzilgleaftafrlbt", // Replace with your email password or app password
                               },
                           });
                   
                           // Mail options
                           const mailOptions = {
-                              from: process.env.Email, // Replace with your email
-                              to: process.env.EmailtoSend, // Recipient's email
+                              from: "homelandop.temp@gmail.com", // Replace with your email
+                              to: "Melissa@homelandop.com", // Recipient's email
                               subject: 'End Service Request Xstream',
                               text: `Please update service for ${req.user.FirstName} ${req.user.LastName} with Account ID: ${req.user.AccountId}  
                               Service Details: 

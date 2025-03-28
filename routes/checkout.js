@@ -167,7 +167,7 @@ router.route('/').get(authorizeUser,async (req, res) => {
           } = req.body;
 
   // The security key that you use for hashing (provided by IPpay)
-  const securityKey = process.env.securitykey;
+  const securityKey = "iuKdUBYP";
 
   // Generate a hash to verify the ReturnToken (SHA1 hash of SecurityKey + TransactionID + AuthCode)
   const generatedReturnToken = generateReturnToken(securityKey, TransactionID, AuthCode);

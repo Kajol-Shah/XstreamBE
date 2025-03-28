@@ -172,9 +172,9 @@ const checkUser = async (data) => {
     }
     // const id = user._id.toString();
     // console.log("in data...",typeof(id));
-    const accessToken = jwt.sign({id:user._id.toString()},process.env.ACCESS_KEY,{expiresIn:process.env.JWT_EXP});
+    const accessToken = jwt.sign({id:user._id.toString()},"fvgfdg44556@@sensitivedatakeycvfcbgvh34343@",{expiresIn:"90d"});
     const cookieOptions = {
-            expiresIn: new Date(Date.now() + process.env.COOKIE_EXP * 24 * 60 * 60 * 1000),
+            expiresIn: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
             httpOnly:true
     }
     userAuth.accessToken=accessToken;

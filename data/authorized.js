@@ -17,7 +17,7 @@ const authorizeUser = async (req,res,next) => {
    
     try{
         
-        const decodeToken = jwt.verify(req.cookies.userSave,process.env.ACCESS_KEY);
+        const decodeToken = jwt.verify(req.cookies.userSave,"fvgfdg44556@@sensitivedatakeycvfcbgvh34343@");
         const userCollection = await users();
         const accountCollection = await account();
         // console.log("auth1");

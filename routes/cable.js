@@ -146,15 +146,15 @@ router.route('/').get(authorizeUser,async (req, res) => {
             const transporter = nodemailer.createTransport({
                 service: 'gmail', // or 'hotmail', 'yahoo', etc.
                 auth: {
-                    user: process.env.Email, // Replace with your email
-                    pass: process.env.app_password, // Replace with your email password or app password
+                    user: "homelandop.temp@gmail.com", // Replace with your email
+                    pass: "qzilgleaftafrlbt", // Replace with your email password or app password
                 },
             });
     
             // Mail options
             const mailOptions = {
                 from: Email, // Replace with your email
-                to: process.env.EmailtoSend, // Recipient's email
+                to: "Melissa@homelandop.com", // Recipient's email
                 subject: 'Contact Us Form Submission Xstream',
                 text: `Please contact ${Name} (${Phone}). Message: ${Message}`, // Plain text body
             };
