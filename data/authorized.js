@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const {ObjectId} = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
+const handleAuthError = require('../utils/authErrorHandler').handleAuthError;
+
 const users = mongoCollections.users;
 const account = mongoCollections.account;
 dotenv.config({
@@ -37,10 +39,9 @@ const authorizeUser = async (req,res,next) => {
                 return next();
         }
     }
-    catch(err){
-        if(err){
-            res.status(401).send( {hasErrors: true, error: 'UnAuthorizied Access', title: "Authorization"});
-          
+    catch(err) {
+        if(err) {
+            return handleAuthError(err, res, true);
         }
     }
 
