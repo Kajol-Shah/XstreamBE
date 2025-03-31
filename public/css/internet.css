@@ -42,7 +42,7 @@ body {
     margin-top: -4%;
 }
 .heading-container h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-align: center; 
@@ -126,6 +126,9 @@ body {
     border-radius: 45px;
     padding: 40px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
    
   }
   
@@ -162,7 +165,7 @@ body {
     letter-spacing: -0.02em;
     line-height: 40px;
     font-style: normal;
-    font-size: 28px;
+    font-size: 32px;
     padding-bottom: 8px;
   }
   
@@ -170,10 +173,17 @@ body {
     font-weight: 600;
     line-height: 32px;
     color: rgb(255, 255, 255);
-    font-size: 18px;
+    font-size: 24px;
     max-width: 470px;
+    max-height: 150px; /* Adjust this based on your font size and the number of visible lines */
+    overflow: hidden; /* Hides the scrollbar */
+    scroll-behavior: smooth;
 
   }
+  .card-description:hover {
+    overflow-y: scroll; /* Enable scrolling when hovering */
+  }
+  
 /* Feature Card Button */
 .feature-card-btn {
   background-color: #FFAB00;
@@ -186,6 +196,7 @@ body {
   transition: background-color 0.3s ease;
   margin-top: 20px;
   font-weight: 700;
+  width: 230px !important;
 }
 
 /* Feature Card Button Hover Effects */

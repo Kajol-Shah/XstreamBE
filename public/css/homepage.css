@@ -181,7 +181,7 @@ body {
   margin-bottom: 25px;
 }
 .sub-cards-item_link {
-  display: block;
+  display: flex;
   padding: 30px 20px;
   background-color: #2e2c2c;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -190,7 +190,8 @@ body {
   border-radius: 20px;
  margin-left: 5%;
  max-width: 400px;
-
+ flex-direction: column;
+ justify-content: space-between;
 }
 
 
@@ -210,12 +211,12 @@ body {
 }
 .sub-cards-item_title {
   min-height: 20px;
-  margin: 0 0 25px;
+  /* margin: 0 0 25px; */
 
   overflow: hidden;
 
   font-weight: bold;
-  font-size: 28px;
+  font-size: 32px;
   color: #FFF;
 
   z-index: 2;
@@ -237,12 +238,27 @@ body {
   -o-transition: all .5s ease;
   transition: all .5s ease;
 }
-.sub-cards-p{
-  font-size: 18px;
+/* .sub-cards-p{
+  font-size: 24px;
   z-index: 2;
   color: #FFF;
   position: relative;
+} */
+.sub-cards-p {
+  font-size: 24px;
+  z-index: 2;
+  color: #FFF;
+  position: relative;
+  max-height: 220px; /* Adjust this based on your font size and the number of visible lines */
+  overflow: hidden; /* Hides the scrollbar */
+  scroll-behavior: smooth;
 }
+
+.sub-cards-p:hover {
+  overflow-y: scroll; /* Enable scrolling when hovering */
+}
+
+
 .card {
   padding: 30px;
   min-height: 350px;
@@ -299,7 +315,7 @@ body {
   grid-row: 3/4;
   font-weight:bold;
   color: #ffffff;
-  font-size: 28px;
+  font-size: 32px;
   position: relative;
   z-index: 1;
  
@@ -308,7 +324,7 @@ body {
 .card__apply {
   grid-row: 4/5;
   align-self: center;
-  font-size: 18px;
+  font-size: 24px;
   position: relative;
   z-index: 1;
 }
@@ -383,7 +399,6 @@ body {
   font-weight: 500;
   color: #ffa039;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
 }
 
 
@@ -407,6 +422,7 @@ body {
 }
 /* Feature Card Button */
 .feature-card-btn {
+  width: 190px !important;
   background-color: #ffa039;
   color: #0f0e0e;
   padding: 10px 40px;
@@ -421,6 +437,7 @@ body {
 
 /* Feature Card Button Hover Effects */
 .feature-card-btn:hover {
+  width: 230px !important;
   font-size: 1.2rem;
   color: #0a0a0a;
 }
@@ -441,7 +458,7 @@ body {
 
 .platform-title {
   padding-top: 3%;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   letter-spacing: 1.5px;
   /* color: #555; */
@@ -879,7 +896,8 @@ body {
 .sub-cards-item_bg1 {
   height: 128px;
   width: 128px;
-  background-color: #ffa039;
+  background-color: #eee1e1;
+  /* background-color: #ffa039; */
   /* background-color: #ffbd39; */
   z-index: 1;
   position: absolute;
