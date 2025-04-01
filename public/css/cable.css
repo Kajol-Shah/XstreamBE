@@ -925,7 +925,10 @@ overflow:hidden;
   border-radius: 12px;
   position: relative;
   overflow: hidden;
-  height: 570px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .sub-cards-item_bg1 {
   height: 128px;
@@ -967,12 +970,12 @@ overflow:hidden;
 }
 .plan .pricing small {
   color:#fff;
-  font-size: 0.75em;
+  font-size: 0.55rem;
   margin-left: 0.25em;
 }
 .plan .title {
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 32px;
   color: #fff;
 }
 .plan .title + * {
@@ -980,17 +983,17 @@ overflow:hidden;
 }
 .plan .info + * {
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 24px;
 }
 .info{
-  font-size: 1.1rem;
+  font-size: 24px;
 }
 .plan .features {
   display: flex;
   flex-direction: column;
 }
 .plan .features li span{
-  font-size: 1.2rem;
+  font-size: 24px;
 }
 .plan .features li {
   display: flex;
